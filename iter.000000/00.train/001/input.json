@@ -1,0 +1,52 @@
+{
+    "model": {
+        "type_map": [
+            "Cu",
+            "C",
+            "O",
+            "H"
+        ],
+        "type_embedding": {
+            "trainable": true,
+            "seed": 2195638563
+        },
+        "descriptor": {
+            "type": "se_atten",
+            "seed": 981245449
+        },
+        "fitting_net": {
+            "seed": 1707537633
+        }
+    },
+    "loss": {
+        "start_pref_e": 0.02,
+        "limit_pref_e": 1,
+        "start_pref_f": 1000,
+        "limit_pref_f": 1,
+        "start_pref_v": 0,
+        "limit_pref_v": 0
+    },
+    "learning_rate": {},
+    "training": {
+        "stop_batch": 100,
+        "disp_file": "lcurve.out",
+        "disp_freq": 100,
+        "numb_test": 2,
+        "save_freq": 1000,
+        "save_ckpt": "model.ckpt",
+        "disp_training": true,
+        "time_training": true,
+        "profiling": false,
+        "profiling_file": "timeline.json",
+        "_comment": "that's all",
+        "training_data": {
+            "systems": [
+                "../data.init/Data/deepmd"
+            ],
+            "batch_size": [
+                1
+            ]
+        },
+        "seed": 1214094464
+    }
+}

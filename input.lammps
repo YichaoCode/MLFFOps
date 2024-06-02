@@ -1,0 +1,32 @@
+#Initialization
+units          metal
+dimension      3
+atom_style     atomic
+
+
+
+
+#Interatomic potentials - DeepMD
+pair_style     deepmd 
+pair_coeff     * *
+
+
+variable        T world 300 350 400 450 500
+
+
+velocity        all create ${T} 12345 mom yes rot yes dist gaussian
+
+
+timestep        0.005
+
+
+thermo          100
+thermo_style    custom step temp pe ke etotal press
+
+
+fix             1 all nve
+fix             2 all temp/rescale 100 ${T} ${T} 0.01 1.0
+replica         1 temp 300 500 5
+
+
+run             10000

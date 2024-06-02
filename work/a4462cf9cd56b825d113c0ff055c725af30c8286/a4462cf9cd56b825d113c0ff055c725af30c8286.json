@@ -1,0 +1,181 @@
+{
+    "work_base": "iter.000000/01.model_devi",
+    "_abs_work_base": "/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/iter.000000/01.model_devi",
+    "machine": {
+        "batch_type": "Shell",
+        "context_type": "LocalContext",
+        "local_root": "/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto",
+        "remote_root": "./work",
+        "remote_profile": {}
+    },
+    "resources": {
+        "number_node": 1,
+        "cpu_per_node": 4,
+        "gpu_per_node": 0,
+        "queue_name": "",
+        "group_size": 1,
+        "custom_flags": [],
+        "strategy": {
+            "if_cuda_multi_devices": false,
+            "ratio_unfinished": 0.0
+        },
+        "para_deg": 1,
+        "module_purge": false,
+        "module_unload_list": [],
+        "module_list": [],
+        "source_list": [],
+        "envs": {},
+        "prepend_script": [],
+        "append_script": [],
+        "wait_time": 0,
+        "kwargs": {}
+    },
+    "forward_common_files": [
+        "graph.000.pb",
+        "graph.001.pb"
+    ],
+    "backward_common_files": [],
+    "belonging_jobs": [
+        {
+            "e31d1607de3cccb6c5f551f95618cfb1d7585adc": {
+                "job_task_list": [
+                    {
+                        "command": "CUDA_VISIBLE_DEVICES=-1 python /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/dimer.py True 53 0.05 53 3.5 gauss",
+                        "task_work_path": "task.model_devi_task_000_0001",
+                        "forward_files": [
+                            "conf.lmp",
+                            "input.lammps",
+                            "traj"
+                        ],
+                        "backward_files": [
+                            "model_devi.out",
+                            "model_devi.log",
+                            "traj"
+                        ],
+                        "outlog": "model_devi.log",
+                        "errlog": "model_devi.log"
+                    }
+                ],
+                "resources": {
+                    "number_node": 1,
+                    "cpu_per_node": 4,
+                    "gpu_per_node": 0,
+                    "queue_name": "",
+                    "group_size": 1,
+                    "custom_flags": [],
+                    "strategy": {
+                        "if_cuda_multi_devices": false,
+                        "ratio_unfinished": 0.0
+                    },
+                    "para_deg": 1,
+                    "module_purge": false,
+                    "module_unload_list": [],
+                    "module_list": [],
+                    "source_list": [],
+                    "envs": {},
+                    "prepend_script": [],
+                    "append_script": [],
+                    "wait_time": 0,
+                    "kwargs": {}
+                },
+                "job_state": 2,
+                "job_id": 1799303,
+                "fail_count": 0
+            }
+        },
+        {
+            "056ec15a15fc737c0375e757a7dfdebfc60922ba": {
+                "job_task_list": [
+                    {
+                        "command": "CUDA_VISIBLE_DEVICES=-1 python /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/dimer.py True 53 0.05 53 3.5 gauss",
+                        "task_work_path": "task.model_devi_task_000_0000",
+                        "forward_files": [
+                            "conf.lmp",
+                            "input.lammps",
+                            "traj"
+                        ],
+                        "backward_files": [
+                            "model_devi.out",
+                            "model_devi.log",
+                            "traj"
+                        ],
+                        "outlog": "model_devi.log",
+                        "errlog": "model_devi.log"
+                    }
+                ],
+                "resources": {
+                    "number_node": 1,
+                    "cpu_per_node": 4,
+                    "gpu_per_node": 0,
+                    "queue_name": "",
+                    "group_size": 1,
+                    "custom_flags": [],
+                    "strategy": {
+                        "if_cuda_multi_devices": false,
+                        "ratio_unfinished": 0.0
+                    },
+                    "para_deg": 1,
+                    "module_purge": false,
+                    "module_unload_list": [],
+                    "module_list": [],
+                    "source_list": [],
+                    "envs": {},
+                    "prepend_script": [],
+                    "append_script": [],
+                    "wait_time": 0,
+                    "kwargs": {}
+                },
+                "job_state": 2,
+                "job_id": 1799306,
+                "fail_count": 0
+            }
+        },
+        {
+            "847fcdb0d0c24162c7c03ee7397434b75905539d": {
+                "job_task_list": [
+                    {
+                        "command": "CUDA_VISIBLE_DEVICES=-1 python /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/dimer.py True 53 0.05 53 3.5 gauss",
+                        "task_work_path": "task.model_devi_task_000_0002",
+                        "forward_files": [
+                            "conf.lmp",
+                            "input.lammps",
+                            "traj"
+                        ],
+                        "backward_files": [
+                            "model_devi.out",
+                            "model_devi.log",
+                            "traj"
+                        ],
+                        "outlog": "model_devi.log",
+                        "errlog": "model_devi.log"
+                    }
+                ],
+                "resources": {
+                    "number_node": 1,
+                    "cpu_per_node": 4,
+                    "gpu_per_node": 0,
+                    "queue_name": "",
+                    "group_size": 1,
+                    "custom_flags": [],
+                    "strategy": {
+                        "if_cuda_multi_devices": false,
+                        "ratio_unfinished": 0.0
+                    },
+                    "para_deg": 1,
+                    "module_purge": false,
+                    "module_unload_list": [],
+                    "module_list": [],
+                    "source_list": [],
+                    "envs": {},
+                    "prepend_script": [],
+                    "append_script": [],
+                    "wait_time": 0,
+                    "kwargs": {}
+                },
+                "job_state": 2,
+                "job_id": 1799310,
+                "fail_count": 0
+            }
+        }
+    ]
+}

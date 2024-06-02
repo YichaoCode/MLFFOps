@@ -1,0 +1,18 @@
+{
+    "sys_idx": [
+        0
+    ],
+    "trj_freq": 100,
+    "_idx": "01",
+    "temps": [
+        300
+    ],
+    "press": [
+        1
+    ],
+    "nsteps": 20000,
+    "ensemble": "NVT",
+    "template": {
+        "lmp": "input.lammps"
+    }
+}

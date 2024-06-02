@@ -1,0 +1,35 @@
+
+
+#!/bin/bash -l
+
+
+REMOTE_ROOT=$(readlink -f /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/work/a4462cf9cd56b825d113c0ff055c725af30c8286)
+echo 0 > $REMOTE_ROOT/847fcdb0d0c24162c7c03ee7397434b75905539d_flag_if_job_task_fail
+test $? -ne 0 && exit 1
+
+
+
+
+
+
+
+
+cd $REMOTE_ROOT
+cd task.model_devi_task_000_0002
+test $? -ne 0 && exit 1
+if [ ! -f 46962c92815eea8c341721e8d282d58fe144449d_task_tag_finished ] ;then
+   ( CUDA_VISIBLE_DEVICES=-1 python /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/dimer.py True 53 0.05 53 3.5 gauss ) 1>>model_devi.log 2>>model_devi.log 
+  if test $? -eq 0; then touch 46962c92815eea8c341721e8d282d58fe144449d_task_tag_finished; else echo 1 > $REMOTE_ROOT/847fcdb0d0c24162c7c03ee7397434b75905539d_flag_if_job_task_fail;fi
+fi &
+
+
+
+cd $REMOTE_ROOT
+test $? -ne 0 && exit 1
+
+wait
+FLAG_IF_JOB_TASK_FAIL=$(cat 847fcdb0d0c24162c7c03ee7397434b75905539d_flag_if_job_task_fail)
+if test $FLAG_IF_JOB_TASK_FAIL -eq 0; then touch 847fcdb0d0c24162c7c03ee7397434b75905539d_job_tag_finished; else exit 1;fi
+
+
+

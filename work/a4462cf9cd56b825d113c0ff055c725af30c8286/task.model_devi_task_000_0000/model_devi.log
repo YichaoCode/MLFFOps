@@ -1,0 +1,1695 @@
+WARNING:tensorflow:From /home/yinbc/.conda/envs/deepmd_yichao/lib/python3.10/site-packages/tensorflow/python/compat/v2_compat.py:107: disable_resource_variables (from tensorflow.python.ops.variable_scope) is deprecated and will be removed in a future version.
+Instructions for updating:
+non-resource variables are not supported in the long term
+WARNING:root:To get the best performance, it is recommended to adjust the number of threads by setting the environment variables OMP_NUM_THREADS, TF_INTRA_OP_PARALLELISM_THREADS, and TF_INTER_OP_PARALLELISM_THREADS. See https://deepmd.rtfd.io/parallelism/ for more information.
+WARNING:root:Environment variable KMP_BLOCKTIME is empty. Use the default value 0
+WARNING:root:Environment variable KMP_AFFINITY is empty. Use the default value granularity=fine,verbose,compact,1,0
+/home/yinbc/.conda/envs/deepmd_yichao/lib/python3.10/importlib/__init__.py:169: UserWarning: The NumPy module was reloaded (imported a second time). This can in some cases result in small but subtle issues and is discouraged.
+  _bootstrap._exec(spec, module)
+OMP: Info #155: KMP_AFFINITY: Initial OS proc set respected: 0-23
+OMP: Info #216: KMP_AFFINITY: decoding x2APIC ids.
+OMP: Info #157: KMP_AFFINITY: 24 available OS procs
+OMP: Info #158: KMP_AFFINITY: Uniform topology
+OMP: Info #287: KMP_AFFINITY: topology layer "LL cache" is equivalent to "socket".
+OMP: Info #192: KMP_AFFINITY: 2 sockets x 12 cores/socket x 1 thread/core (24 total cores)
+OMP: Info #218: KMP_AFFINITY: OS proc to physical thread map:
+OMP: Info #172: KMP_AFFINITY: OS proc 0 maps to socket 0 core 0 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 1 maps to socket 0 core 1 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 2 maps to socket 0 core 2 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 3 maps to socket 0 core 4 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 4 maps to socket 0 core 5 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 5 maps to socket 0 core 6 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 6 maps to socket 0 core 8 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 7 maps to socket 0 core 9 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 8 maps to socket 0 core 10 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 9 maps to socket 0 core 12 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 10 maps to socket 0 core 13 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 11 maps to socket 0 core 14 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 12 maps to socket 1 core 0 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 13 maps to socket 1 core 1 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 14 maps to socket 1 core 2 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 15 maps to socket 1 core 4 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 16 maps to socket 1 core 5 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 17 maps to socket 1 core 6 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 18 maps to socket 1 core 8 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 19 maps to socket 1 core 9 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 20 maps to socket 1 core 10 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 21 maps to socket 1 core 12 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 22 maps to socket 1 core 13 thread 0 
+OMP: Info #172: KMP_AFFINITY: OS proc 23 maps to socket 1 core 14 thread 0 
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799313 thread 0 bound to OS proc set 0
+2024-05-30 16:20:29.204061: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2 AVX AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-05-30 16:20:29.403743: E tensorflow/stream_executor/cuda/cuda_driver.cc:271] failed call to cuInit: CUDA_ERROR_NO_DEVICE: no CUDA-capable device is detected
+2024-05-30 16:20:29.403798: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:169] retrieving CUDA diagnostic information for host: saskatchewan
+2024-05-30 16:20:29.403806: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:176] hostname: saskatchewan
+2024-05-30 16:20:29.404109: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:200] libcuda reported version is: 550.54.15
+2024-05-30 16:20:29.404148: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:204] kernel reported version is: 550.54.15
+2024-05-30 16:20:29.404153: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:310] kernel version seems to match DSO: 550.54.15
+2024-05-30 16:20:29.404192: I tensorflow/core/common_runtime/process_util.cc:146] Creating new thread pool with default inter op setting: 2. Tune using inter_op_parallelism_threads for best performance.
+2024-05-30 16:20:29.429800: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:354] MLIR V1 optimization pass is not enabled
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799359 thread 1 bound to OS proc set 1
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799412 thread 2 bound to OS proc set 2
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799413 thread 3 bound to OS proc set 3
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799414 thread 4 bound to OS proc set 4
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799416 thread 6 bound to OS proc set 6
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799415 thread 5 bound to OS proc set 5
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799418 thread 8 bound to OS proc set 8
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799417 thread 7 bound to OS proc set 7
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799419 thread 9 bound to OS proc set 9
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799420 thread 10 bound to OS proc set 10
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799421 thread 11 bound to OS proc set 11
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799422 thread 12 bound to OS proc set 12
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799423 thread 13 bound to OS proc set 13
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799425 thread 15 bound to OS proc set 15
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799424 thread 14 bound to OS proc set 14
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799426 thread 16 bound to OS proc set 16
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799427 thread 17 bound to OS proc set 17
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799428 thread 18 bound to OS proc set 18
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799429 thread 19 bound to OS proc set 19
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799430 thread 20 bound to OS proc set 20
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799431 thread 21 bound to OS proc set 21
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799432 thread 22 bound to OS proc set 22
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799433 thread 23 bound to OS proc set 23
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799434 thread 24 bound to OS proc set 0
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799360 thread 25 bound to OS proc set 1
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799492 thread 26 bound to OS proc set 2
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799493 thread 27 bound to OS proc set 3
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799494 thread 28 bound to OS proc set 4
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799495 thread 29 bound to OS proc set 5
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799496 thread 30 bound to OS proc set 6
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799498 thread 32 bound to OS proc set 8
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799497 thread 31 bound to OS proc set 7
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799499 thread 33 bound to OS proc set 9
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799501 thread 35 bound to OS proc set 11
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799502 thread 36 bound to OS proc set 12
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799500 thread 34 bound to OS proc set 10
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799503 thread 37 bound to OS proc set 13
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799504 thread 38 bound to OS proc set 14
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799505 thread 39 bound to OS proc set 15
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799506 thread 40 bound to OS proc set 16
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799507 thread 41 bound to OS proc set 17
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799508 thread 42 bound to OS proc set 18
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799509 thread 43 bound to OS proc set 19
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799510 thread 44 bound to OS proc set 20
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799511 thread 45 bound to OS proc set 21
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799512 thread 46 bound to OS proc set 22
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799513 thread 47 bound to OS proc set 23
+OMP: Info #254: KMP_AFFINITY: pid 1799313 tid 1799514 thread 48 bound to OS proc set 0
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+54
+1
+      Step     Time          Energy         fmax
+BFGS:    0 16:40:09     -188.546278        3.3237
+54
+1
+BFGS:    1 16:40:10     -188.932886        2.7257
+54
+1
+BFGS:    2 16:40:11     -189.227484        1.8250
+54
+1
+BFGS:    3 16:40:13     -189.306889        0.7460
+54
+1
+BFGS:    4 16:40:14     -189.335064        0.6018
+54
+1
+BFGS:    5 16:40:16     -189.455263        1.1841
+54
+1
+BFGS:    6 16:40:18     -189.479105        0.8670
+54
+1
+BFGS:    7 16:40:19     -189.540723        0.7896
+54
+1
+BFGS:    8 16:40:20     -189.632944        1.8614
+54
+1
+BFGS:    9 16:40:22     -189.689232        1.4639
+54
+1
+BFGS:   10 16:40:23     -189.798791        0.6823
+54
+1
+      Step     Time          Energy         fmax
+BFGS:    0 16:40:24     -188.179103        3.9752
+54
+1
+BFGS:    1 16:40:26     -188.618098        3.2942
+54
+1
+BFGS:    2 16:40:27     -189.143793        3.8679
+54
+1
+BFGS:    3 16:40:28     -189.276458        0.9684
+54
+1
+BFGS:    4 16:40:30     -189.322048        0.7482
+54
+1
+BFGS:    5 16:40:31     -189.395119        0.9712
+54
+1
+BFGS:    6 16:40:33     -189.447001        1.0237
+54
+1
+BFGS:    7 16:40:34     -189.487038        1.0723
+54
+1
+BFGS:    8 16:40:35     -189.529557        1.2659
+54
+1
+BFGS:    9 16:40:37     -189.628798        2.0439
+54
+1
+BFGS:   10 16:40:38     -189.676023        1.2939
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+Cell([10.224764055957479, 10.224764055957479, 33.615])
+54
+53
+54
+53

@@ -1,0 +1,319 @@
+2024-04-25 19:35:00,872 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:35:00,873 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:35:00,873 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:35:00,873 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:35:00,873 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:35:00,873 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:35:00,874 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:35:00,874 - dpgen - INFO - Converting machine data
+2024-04-25 19:35:00,874 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:35:00,874 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:35:00,874 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:35:00,877 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:35:00,877 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:35:00,877 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:35:00,877 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:43:02,995 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:43:02,995 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:43:02,995 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:43:02,995 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:43:02,995 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:43:02,995 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:43:02,996 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:43:02,996 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:43:02,996 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:43:02,996 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:43:02,996 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:43:02,996 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:43:02,997 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:43:02,997 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:43:02,997 - dpgen - INFO - Converting machine data
+2024-04-25 19:43:02,997 - dpgen - INFO - Converting machine data
+2024-04-25 19:43:02,997 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:43:02,997 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:43:02,997 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:43:02,997 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:43:02,997 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:43:02,997 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:43:03,000 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:43:03,000 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:43:03,000 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:43:03,000 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:43:03,000 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:43:03,000 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:43:03,000 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:43:03,000 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:43:34,392 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:43:34,392 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:43:34,392 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:43:34,392 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:43:34,392 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:43:34,392 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:43:34,392 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:43:34,392 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:43:34,392 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:43:34,392 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:43:34,393 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:43:34,393 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:43:34,394 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:43:34,394 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:43:34,394 - dpgen - INFO - Converting machine data
+2024-04-25 19:43:34,394 - dpgen - INFO - Converting machine data
+2024-04-25 19:43:34,394 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:43:34,394 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:43:34,394 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:43:34,394 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:43:34,394 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:43:34,394 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:43:34,397 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:43:34,397 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:43:34,397 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:43:34,397 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:43:34,397 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:43:34,397 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:43:34,397 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:43:34,397 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:45:20,437 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:45:20,438 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:45:20,438 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:45:20,438 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:45:20,438 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:45:20,439 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:45:20,439 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:45:20,440 - dpgen - INFO - Converting machine data
+2024-04-25 19:45:20,440 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:45:20,440 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:45:20,440 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:45:20,442 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:45:20,443 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:45:20,443 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:45:20,443 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:45:56,457 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:45:56,457 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:45:56,458 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:45:56,458 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:45:56,458 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:45:56,458 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:45:56,458 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:45:56,458 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:45:56,458 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:45:56,458 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:45:56,459 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:45:56,459 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:45:56,459 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:45:56,459 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:45:56,460 - dpgen - INFO - Converting machine data
+2024-04-25 19:45:56,460 - dpgen - INFO - Converting machine data
+2024-04-25 19:45:56,460 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:45:56,460 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:45:56,460 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:45:56,460 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:45:56,460 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:45:56,460 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:45:56,463 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:45:56,463 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:45:56,463 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:45:56,463 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:45:56,463 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:45:56,463 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:45:56,463 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:45:56,463 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:46:13,287 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:46:13,287 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:46:13,288 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:46:13,288 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:46:13,288 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:46:13,288 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:46:13,288 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:46:13,288 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:46:13,288 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:46:13,288 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:46:13,288 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:46:13,288 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:46:13,289 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:46:13,289 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:46:13,289 - dpgen - INFO - Converting machine data
+2024-04-25 19:46:13,289 - dpgen - INFO - Converting machine data
+2024-04-25 19:46:13,289 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:46:13,289 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:46:13,289 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:46:13,289 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:46:13,290 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:46:13,290 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:46:13,292 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:46:13,292 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:46:13,292 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:46:13,292 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:46:13,292 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:46:13,292 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:46:13,293 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:46:13,293 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:46:52,827 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:46:52,827 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:46:52,827 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:46:52,827 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:46:52,827 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:46:52,827 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:46:52,828 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:46:52,828 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:46:52,828 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:46:52,828 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:46:52,828 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:46:52,828 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:46:52,829 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:46:52,829 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:46:52,829 - dpgen - INFO - Converting machine data
+2024-04-25 19:46:52,829 - dpgen - INFO - Converting machine data
+2024-04-25 19:46:52,829 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:46:52,829 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:46:52,829 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:46:52,829 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:46:52,829 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:46:52,829 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:46:52,832 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:46:52,832 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:46:52,832 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:46:52,832 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:46:52,832 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:46:52,832 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:46:52,832 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:46:52,832 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:47:04,918 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:47:04,918 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:47:04,918 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:47:04,918 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:47:04,918 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:47:04,918 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:47:04,919 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:47:04,919 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:47:04,919 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:47:04,919 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:47:04,919 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:47:04,919 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:47:04,920 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:47:04,920 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:47:04,920 - dpgen - INFO - Converting machine data
+2024-04-25 19:47:04,920 - dpgen - INFO - Converting machine data
+2024-04-25 19:47:04,920 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:47:04,920 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:47:04,920 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:47:04,920 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:47:04,920 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:47:04,920 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:47:04,923 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:47:04,923 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:47:04,923 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:47:04,923 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:47:04,923 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:47:04,923 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:47:04,923 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:47:04,923 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:47:37,909 - dpgen - INFO - Loading parameter file: input/par.json-------------------------------------------------
+2024-04-25 19:47:37,909 - dpgen - INFO - Loading parameter file: input/par.json
+2024-04-25 19:47:37,910 - dpgen - INFO - Parameter data loaded successfully-------------------------------------------------
+2024-04-25 19:47:37,910 - dpgen - INFO - Parameter data loaded successfully
+2024-04-25 19:47:37,910 - dpgen - INFO - Loading machine file: input/machine.json-------------------------------------------------
+2024-04-25 19:47:37,910 - dpgen - INFO - Loading machine file: input/machine.json
+2024-04-25 19:47:37,910 - dpgen - INFO - Machine data loaded successfully-------------------------------------------------
+2024-04-25 19:47:37,910 - dpgen - INFO - Machine data loaded successfully
+2024-04-25 19:47:37,910 - dpgen - INFO - Getting argument info for jdata-------------------------------------------------
+2024-04-25 19:47:37,910 - dpgen - INFO - Getting argument info for jdata
+2024-04-25 19:47:37,911 - dpgen - INFO - Normalizing jdata based on argument info-------------------------------------------------
+2024-04-25 19:47:37,911 - dpgen - INFO - Normalizing jdata based on argument info
+2024-04-25 19:47:37,912 - dpgen - INFO - Updating mass map in jdata-------------------------------------------------
+2024-04-25 19:47:37,912 - dpgen - INFO - Updating mass map in jdata
+2024-04-25 19:47:37,912 - dpgen - INFO - Converting machine data-------------------------------------------------
+2024-04-25 19:47:37,912 - dpgen - INFO - Converting machine data
+2024-04-25 19:47:37,912 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-04-25 19:47:37,912 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:47:37,912 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-04-25 19:47:37,912 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:47:37,912 - dpgen - INFO - Running task 00 (make_train) for iteration 000-------------------------------------------------
+2024-04-25 19:47:37,912 - dpgen - INFO - Running task 00 (make_train) for iteration 000
+2024-04-25 19:47:37,915 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed-------------------------------------------------
+2024-04-25 19:47:37,915 - dpgen - INFO - Task 00 (make_train) for iteration 000 completed
+2024-04-25 19:47:37,915 - dpgen - INFO - Recording completed task 00 of iteration 000-------------------------------------------------
+2024-04-25 19:47:37,915 - dpgen - INFO - Recording completed task 00 of iteration 000
+2024-04-25 19:47:37,915 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-04-25 19:47:37,915 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:47:37,915 - dpgen - INFO - Running task 01 (run_train) for iteration 000-------------------------------------------------
+2024-04-25 19:47:37,915 - dpgen - INFO - Running task 01 (run_train) for iteration 000
+2024-04-25 19:50:08,781 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-04-25 19:50:08,781 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-04-25 19:50:08,784 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-04-25 19:51:02,791 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-04-25 19:51:02,791 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-04-25 19:51:02,794 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-04-25 19:51:20,195 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-04-25 19:51:20,195 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-04-25 19:51:20,198 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-04-25 19:52:36,223 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-04-25 19:52:36,223 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-04-25 19:52:36,226 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-04-25 19:54:57,153 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:54:57,153 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:54:57,156 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 19:55:07,997 - dpgen - INFO - =============================iter.000000==============================
+2024-04-25 19:55:07,997 - dpgen - INFO - -------------------------iter.000000 task 00--------------------------
+2024-04-25 19:55:08,000 - dpgen - INFO - -------------------------iter.000000 task 01--------------------------
+2024-04-25 20:54:31,619 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-04-25 20:54:31,620 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-04-25 20:54:31,622 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-04-25 20:58:43,621 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-04-25 20:58:43,621 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-04-25 20:58:43,624 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-05-13 03:53:18,729 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-13 03:53:18,746 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-05-13 03:53:18,827 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-05-13 04:37:33,385 - dpgen - INFO - -------------------------iter.000000 task 02---------------------------------------------------------------------------
+2024-05-13 04:37:33,385 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-13 04:55:49,636 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-13 04:55:49,637 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------
+2024-05-13 04:56:29,310 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-13 04:56:29,310 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------
+2024-05-13 04:59:31,576 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-13 04:59:31,576 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-13 05:01:38,006 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-13 05:01:38,006 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-05-13 05:01:38,137 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-05-13 05:06:56,380 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-13 05:06:56,380 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-05-13 05:06:56,383 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-05-13 05:51:10,906 - dpgen - INFO - -------------------------iter.000000 task 02---------------------------------------------------------------------------
+2024-05-13 05:51:10,906 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:00:36,332 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:00:36,355 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:07:47,537 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:07:47,537 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:09:12,824 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:09:12,824 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:09:23,548 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:09:23,548 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:11:48,047 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:11:48,047 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:17:15,214 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:17:15,214 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:17:15,266 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------
+2024-05-17 07:20:57,324 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:20:57,324 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:20:57,529 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------
+2024-05-17 07:25:03,504 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:25:03,505 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:25:03,567 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------
+2024-05-17 07:34:21,850 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:34:21,850 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:34:21,892 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------
+2024-05-17 07:41:51,622 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-17 07:41:51,641 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-17 07:41:51,797 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------
+2024-05-17 08:04:24,779 - dpgen - INFO - -------------------------iter.000000 task 05---------------------------------------------------------------------------
+2024-05-17 08:04:24,779 - dpgen - INFO - -------------------------iter.000000 task 06---------------------------------------------------------------------------
+2024-05-30 16:10:03,580 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-30 16:10:03,598 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-05-30 16:10:03,689 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-05-30 16:19:35,768 - dpgen - INFO - =============================iter.000000==============================-------------------------------------------------
+2024-05-30 16:19:35,768 - dpgen - INFO - -------------------------iter.000000 task 00---------------------------------------------------------------------------
+2024-05-30 16:19:35,772 - dpgen - INFO - -------------------------iter.000000 task 01---------------------------------------------------------------------------
+2024-05-30 16:20:27,000 - dpgen - INFO - -------------------------iter.000000 task 02---------------------------------------------------------------------------
+2024-05-30 16:20:27,000 - dpgen - INFO - -------------------------iter.000000 task 03---------------------------------------------------------------------------
+2024-05-30 16:20:27,095 - dpgen - INFO - -------------------------iter.000000 task 04---------------------------------------------------------------------------

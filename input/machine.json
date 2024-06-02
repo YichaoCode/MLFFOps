@@ -1,0 +1,91 @@
+{
+	"api_version": "1.0",
+	"deepmd_version": "2.0.1",
+
+	"formatters": {
+	  "simple": {
+		"format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+	  }
+	},
+	"root": {
+	  "level": "INFO",
+	  "handlers": [
+		"dpdispatcher",
+		"dpgen"
+	  ]
+	},
+	"train": [
+	  {
+		"command": "srun --gres=gpu:1 -n1 --exclusive cp ../../../OC_10M.pb . ; dp train input.json --finetune OC_10M.pb",
+		"machine": {
+		  "batch_type": "Slurm",
+		  "context_type": "local",
+		  "local_root": "./",
+		  "remote_root": "./work"
+		},
+		"resources": {
+		  "custom_flags": [
+			"#!/bin/bash",
+			"#SBATCH --nodes=1",
+			"#SBATCH --gres=gpu:1",
+			"#SBATCH -t 24:00:00"
+		  ],
+		  "number_node": 1,
+		  "cpu_per_node": 16,
+		  "gpu_per_node": 1,
+		  "group_size": 1
+		}
+	  }
+	],
+	"model_devi": [
+	  {
+		"command": "CUDA_VISIBLE_DEVICES=-1 python /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/dimer.py True 53 0.05 53 3.5 gauss",
+		"model_devi_engine": "dimer",
+		"machine": {
+		  "batch_type": "Shell",
+		  "context_type": "local",
+		  "local_root": "./",
+		  "remote_root": "./work"
+		},
+		"resources": {
+		  "gpu_per_node": 0,
+		  "cpu_per_node": 4,
+		  "number_node": 1,
+		  "source_list": [],
+		  "group_size": 1
+		}
+	  }
+	],
+	"fp": [
+	  {
+		"command": "(' srun ~x-graeme/bin/vasp_std') || true",
+		"machine": {
+		  "batch_type": "Slurm",
+		  "context_type": "SSHContext",
+		  "local_root": "./",
+		  "remote_root": "/anvil/scratch/x-wang3/yinbc-dpclient",
+		  "remote_profile": {
+			"hostname": "anvil.rcac.purdue.edu",
+			"username": "x-wang3",
+			"key_filename": "/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/input/anvil"
+		  }
+		},
+		"resources": {
+		  "source_list": [],
+		  "module_list": [],
+		  "custom_flags": [
+			"#!/bin/bash",
+			"#SBATCH --nodes=1",
+			"#SBATCH -n 128",
+			"#SBATCH -p wholenode",
+			"#SBATCH -t 01:00:00",
+			"#SBATCH -A che190010",
+			"module load intel"
+		  ],
+		  "number_node": 1,
+		  "cpu_per_node": 8,
+		  "group_size": 1
+		}
+	  }
+	]
+  }
