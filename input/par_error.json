@@ -1,0 +1,365 @@
+{
+    "type_map": [
+        "Cu",
+        "C",
+        "O",
+        "H"
+    ],
+    "mass_map": "auto",
+    "_comment": " that's all ",
+    "init_data_prefix": "./",
+    "init_data_sys": [
+        "Data/deepmd"
+    ],
+    "sys_configs_prefix": "./",
+    "sys_configs": [
+        [
+            "Data/devi/0*/POSCAR"
+        ],
+        [
+            "c2h6.POSCAR.01x01x01/01.scale_pert/sys-0002-0006/scale-1.000/000100/POSCAR"
+        ]
+    ],
+    "numb_models": 2,
+    "_training_init_model": true,
+    "_training_iter0_model_path": [
+        "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.000.pb",
+        "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.001.pb",
+        "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.002.pb",
+        "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.003.pb"
+    ],
+    "_training_reuse_iter": 1,
+    "_training_reuse_old_ratio": 1.0,
+    "_training_reuse_stop_batch": 10000,
+    "_training_reuse_start_lr": 0.0001,
+    "_training_reuse_start_pref_e": 0.1,
+    "_training_reuse_start_pref_f": 200,
+    "default_training_param": {
+        "model": {
+            "type_map": [
+                "Cu",
+                "C",
+                "O",
+                "H"
+            ],
+            "type_embedding": {
+                "trainable": true
+            },
+            "descriptor": {
+                "type": "se_atten"
+            },
+            "fitting_net": {}
+        },
+        "loss": {
+            "start_pref_e": 0.02,
+            "limit_pref_e": 1,
+            "start_pref_f": 1000,
+            "limit_pref_f": 1,
+            "start_pref_v": 0,
+            "limit_pref_v": 0
+        },
+        "learning_rate": {},
+        "training": {
+            "stop_batch": 100,
+            "disp_file": "lcurve.out",
+            "disp_freq": 100,
+            "numb_test": 2,
+            "save_freq": 1000,
+            "save_ckpt": "model.ckpt",
+            "disp_training": true,
+            "time_training": true,
+            "profiling": false,
+            "profiling_file": "timeline.json",
+            "_comment": "that's all"
+        }
+    },
+    "model_devi_engine": "dimer",
+    "model_devi_dt": 0.0005,
+    "model_devi_skip": 0,
+    "model_devi_f_trust_lo": 0.1,
+    "model_devi_f_trust_hi": 100.0,
+    "_model_devi_adapt_trust_lo": true,
+    "model_devi_clean_traj": false,
+    "model_devi_plumed": false,
+    "model_devi_jobs": [
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        },
+        {
+            "sys_idx": [
+                0
+            ],
+            "trj_freq": 100,
+            "_idx": "01",
+            "temps": [
+                300
+            ],
+            "press": [
+                1
+            ],
+            "nsteps": 20000,
+            "ensemble": "NVT",
+            "template": {
+                "lmp": "input.lammps"
+            }
+        }
+    ],
+    "fp_style": "vasp",
+    "shuffle_poscar": false,
+    "fp_task_max": 10,
+    "fp_task_min": 5,
+    "fp_pp_path": "./",
+    "fp_pp_files": [
+        "POTCAR"
+    ],
+    "fp_incar": "INCAR"
+}

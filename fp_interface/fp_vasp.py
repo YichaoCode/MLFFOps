@@ -6,12 +6,11 @@ import os
 import glob
 import json
 import shutil
+import logging
 import random
 import warnings
 from collections import Counter
-from packaging.version import Version
 from typing import List
-
 
 import numpy as np
 import scipy.constants as pc
@@ -19,7 +18,6 @@ import dpdata
 
 from pymatgen.io.vasp import Incar, Kpoints
 
-from dpgen.dispatcher.Dispatcher import make_submission
 from dpgen.generator.lib.utils import create_path, make_iter_name
 from dpgen.generator.lib.ele_temp import NBandsEsti
 from dpgen.generator.lib.vasp import make_vasp_incar_user_dict, write_incar_dict
@@ -28,7 +26,6 @@ from dpgen.generator.lib.gaussian import take_cluster
 from dpgen.generator.lib.parse_calypso import _parse_calypso_input, _parse_calypso_dis_mtx
 from dpgen import dlog
 
-
 fp_name = "02.fp"
 model_devi_name = "01.model_devi"
 data_system_fmt = "%03d"
@@ -36,19 +33,19 @@ fp_task_fmt = data_system_fmt + ".%06d"
 
 
 def _make_fp_vasp_inner(
-    iter_index,
-    modd_path,
-    work_path,
-    model_devi_skip,
-    v_trust_lo,
-    v_trust_hi,
-    f_trust_lo,
-    f_trust_hi,
-    fp_task_min,
-    fp_task_max,
-    fp_link_files,
-    type_map,
-    jdata,
+        iter_index,
+        modd_path,
+        work_path,
+        model_devi_skip,
+        v_trust_lo,
+        v_trust_hi,
+        f_trust_lo,
+        f_trust_hi,
+        fp_task_min,
+        fp_task_max,
+        fp_link_files,
+        type_map,
+        jdata,
 ):
     """
     iter_index          int             iter index
@@ -103,6 +100,7 @@ def _make_fp_vasp_inner(
     set_tmp = set(system_index)
     system_index = list(set_tmp)
     system_index.sort()
+    logging.info(f"system_index: {system_index}")
 
     fp_tasks = []
 
@@ -127,13 +125,14 @@ def _make_fp_vasp_inner(
             sys_lim = lim[str(sys_idx)]
         else:
             sys_lim = lim
+        logging.debug(f"_trust_limitation_check: sys_idx={sys_idx}, lim={lim}, sys_lim={sys_lim}")
         return sys_lim
 
     for ss in system_index:
         modd_system_glob = os.path.join(modd_path, "task." + ss + ".*")
         modd_system_task = glob.glob(modd_system_glob)
         modd_system_task.sort()
-        if model_devi_engine in ("lammps", "gromacs", "calypso","dimer"):
+        if model_devi_engine in ("lammps", "gromacs", "calypso", "dimer"):
             # convert global trust limitations to local ones
             f_trust_lo_sys = _trust_limitation_check(int(ss), f_trust_lo)
             f_trust_hi_sys = _trust_limitation_check(int(ss), f_trust_hi)
@@ -206,14 +205,14 @@ def _make_fp_vasp_inner(
                         if line.startswith("     ntx     =       1"):
                             skip_first = True
                         if line.startswith(
-                            "Active learning frame written with max. frc. std.:"
+                                "Active learning frame written with max. frc. std.:"
                         ):
                             if skip_first and first_active:
                                 first_active = False
                                 continue
                             model_devi = (
-                                float(line.split()[-2])
-                                * dpdata.unit.EnergyConversion("kcal_mol", "eV").value()
+                                    float(line.split()[-2])
+                                    * dpdata.unit.EnergyConversion("kcal_mol", "eV").value()
                             )
                             if model_devi < f_trust_lo:
                                 # accurate
@@ -253,17 +252,17 @@ def _make_fp_vasp_inner(
             random.shuffle(fp_rest_failed)
             random.shuffle(fp_rest_accurate)
             with open(
-                os.path.join(work_path, "candidate.shuffled.%s.out" % ss), "w"
+                    os.path.join(work_path, "candidate.shuffled.%s.out" % ss), "w"
             ) as fp:
                 for ii in fp_candidate:
                     fp.write(" ".join([str(nn) for nn in ii]) + "\n")
             with open(
-                os.path.join(work_path, "rest_accurate.shuffled.%s.out" % ss), "w"
+                    os.path.join(work_path, "rest_accurate.shuffled.%s.out" % ss), "w"
             ) as fp:
                 for ii in fp_rest_accurate:
                     fp.write(" ".join([str(nn) for nn in ii]) + "\n")
             with open(
-                os.path.join(work_path, "rest_failed.shuffled.%s.out" % ss), "w"
+                    os.path.join(work_path, "rest_failed.shuffled.%s.out" % ss), "w"
             ) as fp:
                 for ii in fp_rest_failed:
                     fp.write(" ".join([str(nn) for nn in ii]) + "\n")
@@ -277,8 +276,8 @@ def _make_fp_vasp_inner(
         if accurate_ratio < fp_accurate_soft_threshold:
             this_fp_task_max = fp_task_max
         elif (
-            accurate_ratio >= fp_accurate_soft_threshold
-            and accurate_ratio < fp_accurate_threshold
+                accurate_ratio >= fp_accurate_soft_threshold
+                and accurate_ratio < fp_accurate_threshold
         ):
             this_fp_task_max = int(
                 fp_task_max
@@ -290,8 +289,8 @@ def _make_fp_vasp_inner(
         # ----------------------------------------------------------------------------
         if model_devi_engine == "calypso":
             calypso_intend_fp_num_temp = (
-                len(fp_candidate) / candi_num
-            ) * calypso_total_fp_num
+                                                 len(fp_candidate) / candi_num
+                                         ) * calypso_total_fp_num
             if calypso_intend_fp_num_temp < 1:
                 calypso_intend_fp_num = 1
             else:
@@ -303,17 +302,17 @@ def _make_fp_vasp_inner(
 
         # ----------------------------------------------------------------------------
         if (model_devi_engine == "calypso" and len(jdata.get("type_map")) == 1) or (
-            model_devi_engine == "calypso"
-            and len(jdata.get("type_map")) > 1
-            and candi_num <= calypso_total_fp_num
+                model_devi_engine == "calypso"
+                and len(jdata.get("type_map")) > 1
+                and candi_num <= calypso_total_fp_num
         ):
             numb_task = min(this_fp_task_max, len(fp_candidate))
             if numb_task < fp_task_min:
                 numb_task = 0
         elif (
-            model_devi_engine == "calypso"
-            and len(jdata.get("type_map")) > 1
-            and candi_num > calypso_total_fp_num
+                model_devi_engine == "calypso"
+                and len(jdata.get("type_map")) > 1
+                and candi_num > calypso_total_fp_num
         ):
             numb_task = calypso_intend_fp_num
             if len(fp_candidate) < numb_task:
@@ -358,7 +357,7 @@ def _make_fp_vasp_inner(
             ss = os.path.basename(tt).split(".")[1]
             conf_name = os.path.join(tt, "traj")
             conf_sys = None
-            if (model_devi_engine == "lammps") or (model_devi_engine == "dimer") :
+            if (model_devi_engine == "lammps") or (model_devi_engine == "dimer"):
                 if model_devi_merge_traj:
                     conf_sys = all_sys[int(os.path.basename(tt).split(".")[-1])][
                         int(int(ii) / trj_freq)
@@ -479,7 +478,7 @@ def _make_fp_vasp_inner(
         cwd = os.getcwd()
         for idx, task in enumerate(fp_tasks):
             os.chdir(task)
-            if  (model_devi_engine == "lammps") or (model_devi_engine == "dimer"):
+            if (model_devi_engine == "lammps") or (model_devi_engine == "dimer"):
                 sys = None
                 if model_devi_merge_traj:
                     sys = dpdata.System(
@@ -523,19 +522,31 @@ def _make_fp_vasp_inner(
 
 
 def make_vasp_incar(jdata, filename):
+    logging.info(f"Generating {filename}")
+
     if "fp_incar" in jdata.keys():
         fp_incar_path = jdata["fp_incar"]
-        assert os.path.exists(fp_incar_path)
+        logging.info(f"Using provided INCAR path: {fp_incar_path}")
+        assert os.path.exists(fp_incar_path), f"Provided INCAR path does not exist: {fp_incar_path}"
+
         fp_incar_path = os.path.abspath(fp_incar_path)
-        fr = open(fp_incar_path)
-        incar = fr.read()
-        fr.close()
+        logging.info(f"Absolute INCAR path: {fp_incar_path}")
+
+        with open(fp_incar_path, 'r') as fr:
+            incar = fr.read()
+        logging.info("INCAR read from file")
+
     elif "user_fp_params" in jdata.keys():
+        logging.info("Generating INCAR from user_fp_params")
         incar = write_incar_dict(jdata["user_fp_params"])
     else:
+        logging.info("Generating INCAR from fp_params")
         incar = make_vasp_incar_user_dict(jdata["fp_params"])
+
     with open(filename, "w") as fp:
         fp.write(incar)
+    logging.info(f"{filename} generated successfully")
+
     return incar
 
 
@@ -557,23 +568,40 @@ def make_vasp_incar_ele_temp(jdata, filename, ele_temp, nbands_esti=None):
 def make_fp_vasp_incar(iter_index, jdata, nbands_esti=None):
     iter_name = make_iter_name(iter_index)
     work_path = os.path.join(iter_name, fp_name)
+    logging.info(f"Work path: {work_path}")
+
     fp_tasks = glob.glob(os.path.join(work_path, "task.*"))
     fp_tasks.sort()
+    logging.info(f"Found {len(fp_tasks)} FP tasks: {fp_tasks}")
+
     if len(fp_tasks) == 0:
+        logging.warning("No FP tasks found, skipping INCAR generation")
         return
+
     cwd = os.getcwd()
+    logging.info(f"Current working directory: {cwd}")
+
     for ii in fp_tasks:
+        logging.info(f"Processing task: {ii}")
         os.chdir(ii)
+        logging.info(f"Changed to directory: {os.getcwd()}")
+
         make_vasp_incar(jdata, "INCAR")
+
         if os.path.exists("job.json"):
+            logging.info("Found job.json, checking for ele_temp")
             with open("job.json") as fp:
                 job_data = json.load(fp)
             if "ele_temp" in job_data:
+                logging.info(f"Found ele_temp: {job_data['ele_temp']}, updating INCAR")
                 make_vasp_incar_ele_temp(
                     jdata, "INCAR", job_data["ele_temp"], nbands_esti=nbands_esti
                 )
-        os.chdir(cwd)
+        else:
+            logging.info("job.json not found, skipping ele_temp check")
 
+        os.chdir(cwd)
+        logging.info(f"Changed back to directory: {os.getcwd()}")
 
 
 def make_fp_vasp_cp_cvasp(iter_index, jdata):
@@ -668,9 +696,9 @@ def sys_link_fp_vasp_pp(iter_index, jdata):
     fp_pp_path = os.path.abspath(fp_pp_path)
     type_map = jdata["type_map"]
     assert os.path.exists(fp_pp_path)
-   # assert len(fp_pp_files) == len(
+    # assert len(fp_pp_files) == len(
     #    type_map
-    #), "size of fp_pp_files should be the same as the size of type_map"
+    # ), "size of fp_pp_files should be the same as the size of type_map"
 
     iter_name = make_iter_name(iter_index)
     work_path = os.path.join(iter_name, fp_name)
@@ -689,11 +717,11 @@ def sys_link_fp_vasp_pp(iter_index, jdata):
         assert len(sys_tasks) != 0
         sys_poscar = os.path.join(sys_tasks[0], "POSCAR")
         sys = dpdata.System(sys_poscar, fmt="vasp/poscar")
-        
-        #for ele_name in sys["atom_names"]:
-         #   ele_idx = jdata["type_map"].index(ele_name)
-        for  fi in fp_pp_files:
-          potcars.append(fi)#fp_pp_files[ele_idx])
+
+        # for ele_name in sys["atom_names"]:
+        #   ele_idx = jdata["type_map"].index(ele_name)
+        for fi in fp_pp_files:
+            potcars.append(fi)  # fp_pp_files[ele_idx])
         with open(os.path.join(work_path, "POTCAR.%s" % ii), "w") as fp_pot:
             for jj in potcars:
                 with open(os.path.join(fp_pp_path, jj)) as fp:
@@ -704,7 +732,6 @@ def sys_link_fp_vasp_pp(iter_index, jdata):
             os.chdir(jj)
             os.symlink(os.path.join("..", "POTCAR.%s" % ii), "POTCAR")
             os.chdir(cwd)
-
 
 
 def _make_fp_vasp_configs(iter_index, jdata):
@@ -782,9 +809,7 @@ def make_fp_vasp(iter_index, jdata):
     make_fp_vasp_cp_cvasp(iter_index, jdata)
 
 
-
 def post_fp_vasp(iter_index, jdata, rfailed=None):
-
     ratio_failed = rfailed if rfailed else jdata.get("ratio_failed", 0.05)
     model_devi_engine = jdata.get("model_devi_engine", "lammps")
     if model_devi_engine != "calypso":
@@ -834,15 +859,15 @@ def post_fp_vasp(iter_index, jdata, rfailed=None):
                 if all_sys is None:
                     all_sys = _sys
                 else:
-                    energy=_sys['energies']
+                    energy = _sys['energies']
                     print(energy)
-                    if len(energy)==0:
-                      continue
-                    if abs(energy[0] + 188)>10:
-                       continue
+                    if len(energy) == 0:
+                        continue
+                    if abs(energy[0] + 188) > 10:
+                        continue
                     print(_sys)
-                    if len(_sys[0])!=1:
-                       continue
+                    if len(_sys[0]) != 1:
+                        continue
                     all_sys.append(_sys)
                 # save ele_temp, if any
                 if os.path.exists(oo.replace("OUTCAR", "job.json")):
@@ -853,7 +878,7 @@ def post_fp_vasp(iter_index, jdata, rfailed=None):
                         ele_temp = job_data["ele_temp"]
                         all_te.append(ele_temp)
             elif len(_sys) >= 2:
-           #     print(1)
+                #     print(1)
                 raise RuntimeError("The vasp parameter NSW should be set as 1")
             else:
                 icount += 1
@@ -901,7 +926,6 @@ def post_fp_vasp(iter_index, jdata, rfailed=None):
         )
 
 
-
 def _vasp_check_fin(ii):
     if os.path.isfile(os.path.join(ii, "OUTCAR")):
         with open(os.path.join(ii, "OUTCAR"), "r") as fp:
@@ -914,30 +938,18 @@ def _vasp_check_fin(ii):
     return True
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 def _select_by_model_devi_standard(
-    modd_system_task: List[str],
-    f_trust_lo: float,
-    f_trust_hi: float,
-    v_trust_lo: float,
-    v_trust_hi: float,
-    cluster_cutoff: float,
-    model_devi_engine: str,
-    model_devi_skip: int = 0,
-    model_devi_f_avg_relative: bool = False,
-    model_devi_merge_traj: bool = False,
-    detailed_report_make_fp: bool = True,
+        modd_system_task: List[str],
+        f_trust_lo: float,
+        f_trust_hi: float,
+        v_trust_lo: float,
+        v_trust_hi: float,
+        cluster_cutoff: float,
+        model_devi_engine: str,
+        model_devi_skip: int = 0,
+        model_devi_f_avg_relative: bool = False,
+        model_devi_merge_traj: bool = False,
+        detailed_report_make_fp: bool = True,
 ):
     if model_devi_engine == "calypso":
         iter_name = modd_system_task[0].split("/")[0]
@@ -980,14 +992,14 @@ def _select_by_model_devi_standard(
                             counter["failed"] += 1
                             continue
                     if (
-                        all_conf[ii][1] < v_trust_hi and all_conf[ii][1] >= v_trust_lo
+                            all_conf[ii][1] < v_trust_hi and all_conf[ii][1] >= v_trust_lo
                     ) or (
-                        all_conf[ii][4] < f_trust_hi and all_conf[ii][4] >= f_trust_lo
+                            all_conf[ii][4] < f_trust_hi and all_conf[ii][4] >= f_trust_lo
                     ):
                         fp_candidate.append([tt, cc])
                         counter["candidate"] += 1
                     elif (all_conf[ii][1] >= v_trust_hi) or (
-                        all_conf[ii][4] >= f_trust_hi
+                            all_conf[ii][4] >= f_trust_hi
                     ):
                         if detailed_report_make_fp:
                             fp_rest_failed.append([tt, cc])
@@ -1031,13 +1043,10 @@ def _select_by_model_devi_standard(
     return fp_rest_accurate, fp_candidate, fp_rest_failed, counter
 
 
-
-
-
 def _read_model_devi_file(
-    task_path: str,
-    model_devi_f_avg_relative: bool = False,
-    model_devi_merge_traj: bool = False,
+        task_path: str,
+        model_devi_f_avg_relative: bool = False,
+        model_devi_merge_traj: bool = False,
 ):
     model_devi = np.loadtxt(os.path.join(task_path, "model_devi.out"))
     if model_devi_f_avg_relative:
@@ -1058,10 +1067,6 @@ def _read_model_devi_file(
             os.path.join(task_path, "model_devi_avgf.out"), model_devi, fmt="%16.6e"
         )
     return model_devi
-
-
-
-
 
 
 def make_fp_task_name(sys_idx, counter):

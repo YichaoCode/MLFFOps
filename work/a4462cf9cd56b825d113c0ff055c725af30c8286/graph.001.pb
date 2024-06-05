@@ -1,1 +1,0 @@
-/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/iter.000000/01.model_devi/graph.001.pb

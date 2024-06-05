@@ -1,20 +1,16 @@
 # run_iter.py
 # created by Yichao
-
 import os
 import json
 import logging
 import warnings
+from workflow.iter_func import (
+    make_train, run_train, post_train,
+    make_model_devi, run_model_devi, post_model_devi,
+    make_fp, run_fp, post_fp
+)
 
-from workflow.steps.step_0_make_train import make_train
-from workflow.steps.step_1_run_train import run_train
-from workflow.steps.step_2_post_train import post_train
-from workflow.steps.step_3_make_model_devi import make_model_devi
-from workflow.steps.step_4_run_model_devi import run_model_devi
-from workflow.steps.step_5_post_model_devi import post_model_devi
-from workflow.steps.step_6_make_fp import make_fp
-from workflow.steps.step_7_run_fp import run_fp
-from workflow.steps.step_8_post_fp import post_fp
+
 
 from dpgen.generator.lib.utils import (
     copy_file_list,
@@ -37,10 +33,22 @@ from arginfo import run_jdata_arginfo
 from dpgen.util import normalize, sepline
 from dpgen.remote.decide_machine import convert_mdata
 from dpgen import ROOT_PATH, SHORT_CMD, dlog
+
 from config import *
+
 
 def run_iter(param_file, machine_file, restart_task=None):
     logger = logging.getLogger(__name__)
+
+    # custom_log_path = '/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/dpgen.log'
+    # logger = logging.getLogger('dpgen')
+    # logger.setLevel(logging.INFO)
+    # file_handler = logging.FileHandler(custom_log_path)
+    # formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    # file_handler.setFormatter(formatter)
+    # logger.addHandler(file_handler)
+
+
 
     try:
         import ruamel
@@ -177,7 +185,7 @@ def run_iter(param_file, machine_file, restart_task=None):
                     logger.info(f"Task {jj:02d} (run_train) for iteration {ii:03d} completed")
 
                 elif jj == 2:
-                    log_iter("post_train", ii, jj)
+                    log_iter("2", ii, jj)
                     logger.info(f"Running task {jj:02d} (post_train) for iteration {ii:03d}")
                     post_train(ii, jdata, mdata)
                     logger.info(f"Task {jj:02d} (post_train) for iteration {ii:03d} completed")

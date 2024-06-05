@@ -22,10 +22,12 @@ from dpgen.generator.lib.utils import (
     symlink_user_forward_files,
 )
 # 定义 MODEL_DEVI_TASK_FMT 格式字符串
-MODEL_DEVI_TASK_FMT = "model_devi_task_%03d_%04d"
+
+# MODEL_DEVI_TASK_FMT = "model_devi_task_%03d_%04d"
 
 # 定义 MODEL_DEVI_CONF_FMT 格式字符串
-MODEL_DEVI_CONF_FMT = "model_devi_conf_%02d_%03d"
+
+# MODEL_DEVI_CONF_FMT = "model_devi_conf_%02d_%03d"
 
 # 定义 fp_task_fmt 格式字符串
 fp_task_fmt = "fp_task_%d_%04d"

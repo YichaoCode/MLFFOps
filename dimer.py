@@ -85,7 +85,9 @@ def main(args):
         d_atoms.displace()
         with MinModeTranslate(d_atoms, trajectory='dimer_method.traj',
                               logfile='log') as dim_rlx:
-            dim_rlx.run(fmax=0.02,steps=200)
+            # dim_rlx.run(fmax=0.02,steps=200)
+            dim_rlx.run(fmax=0.02,steps=5)
+
             d_atoms.write('POSCAR')
             IS=read("POSCAR")
             FS=read("POSCAR")
