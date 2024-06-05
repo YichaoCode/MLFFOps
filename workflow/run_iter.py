@@ -28,7 +28,6 @@ from dpgen.generator.lib.utils import (
 )
 
 from utils.utils import (
-    _check_empty_iter,
     update_mass_map
 )
 

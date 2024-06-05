@@ -765,3 +765,75 @@ KeyboardInterrupt
 2024-06-05 10:56:04,113 - dpdispatcher - INFO - job: 1976701c42be3ffe62701a5a2de4d3685c741274 5334327 finished
 2024-06-05 10:56:04,678 - dpdispatcher - INFO - job: 65846e89b00e8c7db5d82481187fc36aaa259645 5334328 finished
 2024-06-05 10:56:04,679 - dpdispatcher - INFO - info:check_all_finished: True
+2024-06-05 11:01:34,205 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 11:01:34,215 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc submit; job_id is 4859
+2024-06-05 11:01:34,225 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 submit; job_id is 4860
+2024-06-05 11:02:25,301 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4859 finished
+2024-06-05 11:02:25,333 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 4860 finished
+2024-06-05 11:02:25,480 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 11:02:25,484 - dpdispatcher - INFO - job: 02a237a7e88294302640dfe5db883bfad7ee6f7d submit; job_id is 2716768
+2024-06-05 11:02:25,487 - dpdispatcher - INFO - job: d51fb81686efdf3fbbab224c28c87b3dbd64ef25 submit; job_id is 2716771
+2024-06-05 11:02:25,489 - dpdispatcher - INFO - job: 391ac16306c399d6729daa7830277978e04f2dcb submit; job_id is 2716775
+2024-06-05 11:04:06,892 - dpdispatcher - INFO - job: 02a237a7e88294302640dfe5db883bfad7ee6f7d 2716768 finished
+2024-06-05 11:04:06,914 - dpdispatcher - INFO - job: d51fb81686efdf3fbbab224c28c87b3dbd64ef25 2716771 finished
+2024-06-05 11:04:06,933 - dpdispatcher - INFO - job: 391ac16306c399d6729daa7830277978e04f2dcb 2716775 finished
+2024-06-05 11:04:12,151 - dpdispatcher - INFO - Find old submission; recover submission from json file;submission.submission_hash:132039d773a9747a9e2dc8b89d464dd3553de572; machine.context.remote_root:/anvil/scratch/x-wang3/yinbc-dpclient/132039d773a9747a9e2dc8b89d464dd3553de572; submission.work_base:iter.000000/02.fp;
+2024-06-05 11:04:12,667 - dpdispatcher - INFO - job: f9790ea1f2de5011429efe9b7ea4a4cfc53f46fe 5334319 finished
+2024-06-05 11:04:13,246 - dpdispatcher - INFO - job: 68da1d654e627e23a38df07f83c895e3d496dd77 5334320 finished
+2024-06-05 11:04:13,808 - dpdispatcher - INFO - job: 2a1a8d8cd663cc20a8024cbbef0bae1a3b8c7b89 5334321 finished
+2024-06-05 11:04:14,362 - dpdispatcher - INFO - job: 6b885a25238a9365ea11026d70d19de70cf09235 5334322 finished
+2024-06-05 11:04:14,925 - dpdispatcher - INFO - job: 120acfeaf41f0ef4bbcc853d1ca7a5968bc773e8 5334323 finished
+2024-06-05 11:04:15,486 - dpdispatcher - INFO - job: 80d70c9f52ca73c0b5f62d9bdd07de78f67a6a5c 5334324 finished
+2024-06-05 11:04:16,047 - dpdispatcher - INFO - job: 87acf5b8f7ea9b93c38773664bfa82281a391d05 5334325 finished
+2024-06-05 11:04:16,609 - dpdispatcher - INFO - job: e5ce0a84044ed57a029f1d0688481d2ec7997e78 5334326 finished
+2024-06-05 11:04:17,172 - dpdispatcher - INFO - job: 1976701c42be3ffe62701a5a2de4d3685c741274 5334327 finished
+2024-06-05 11:04:17,735 - dpdispatcher - INFO - job: 65846e89b00e8c7db5d82481187fc36aaa259645 5334328 finished
+2024-06-05 11:04:17,735 - dpdispatcher - INFO - info:check_all_finished: True
+2024-06-05 11:36:10,027 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 11:36:10,038 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc submit; job_id is 4861
+2024-06-05 11:36:10,048 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 submit; job_id is 4862
+2024-06-05 11:37:01,112 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4861 terminated;fail_cout is 1; resubmitting job
+2024-06-05 11:37:01,160 - dpdispatcher - INFO - job:ea5842edce1fb0cc2665155cf7af34cd10fd93dc re-submit after terminated; new job_id is 4863
+2024-06-05 11:37:01,369 - dpdispatcher - INFO - job:ea5842edce1fb0cc2665155cf7af34cd10fd93dc job_id:4863 after re-submitting; the state now is <JobStatus.waiting: 2>
+2024-06-05 11:37:01,369 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 4862 terminated;fail_cout is 1; resubmitting job
+2024-06-05 11:37:01,379 - dpdispatcher - INFO - job:a127204d78332446c833f63baa6a3b0bf25c1fb4 re-submit after terminated; new job_id is 4864
+2024-06-05 11:37:01,587 - dpdispatcher - INFO - job:a127204d78332446c833f63baa6a3b0bf25c1fb4 job_id:4864 after re-submitting; the state now is <JobStatus.waiting: 2>
+2024-06-05 11:37:51,656 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4863 terminated;fail_cout is 2; resubmitting job
+2024-06-05 11:37:51,666 - dpdispatcher - INFO - job:ea5842edce1fb0cc2665155cf7af34cd10fd93dc re-submit after terminated; new job_id is 4865
+2024-06-05 11:37:51,874 - dpdispatcher - INFO - job:ea5842edce1fb0cc2665155cf7af34cd10fd93dc job_id:4865 after re-submitting; the state now is <JobStatus.waiting: 2>
+2024-06-05 11:37:51,874 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 4864 terminated;fail_cout is 2; resubmitting job
+2024-06-05 11:37:51,884 - dpdispatcher - INFO - job:a127204d78332446c833f63baa6a3b0bf25c1fb4 re-submit after terminated; new job_id is 4866
+2024-06-05 11:37:52,093 - dpdispatcher - INFO - job:a127204d78332446c833f63baa6a3b0bf25c1fb4 job_id:4866 after re-submitting; the state now is <JobStatus.running: 3>
+2024-06-05 11:38:42,163 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4865 terminated;fail_cout is 3; resubmitting job
+2024-06-05 11:40:39,139 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 11:40:39,150 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc submit; job_id is 4867
+2024-06-05 11:40:39,160 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 submit; job_id is 4868
+2024-06-05 11:41:30,204 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4867 finished
+2024-06-05 11:41:30,214 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 4868 finished
+2024-06-05 11:41:30,356 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 11:41:30,359 - dpdispatcher - INFO - job: 02a237a7e88294302640dfe5db883bfad7ee6f7d submit; job_id is 2727391
+2024-06-05 11:41:30,361 - dpdispatcher - INFO - job: d51fb81686efdf3fbbab224c28c87b3dbd64ef25 submit; job_id is 2727393
+2024-06-05 11:41:30,364 - dpdispatcher - INFO - job: 391ac16306c399d6729daa7830277978e04f2dcb submit; job_id is 2727396
+2024-06-05 11:41:37,837 - dpdispatcher - ERROR - 
+Traceback (most recent call last):
+  File "/home/yinbc/.conda/envs/deepmd_yichao/lib/python3.10/site-packages/dpdispatcher/submission.py", line 242, in run_submission
+    time.sleep(50)
+KeyboardInterrupt
+2024-06-05 11:41:37,838 - dpdispatcher - INFO - submission exit: 914328d339c29c8066358542f87de1535556cdfe
+2024-06-05 11:41:37,838 - dpdispatcher - INFO - at /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/work/914328d339c29c8066358542f87de1535556cdfe
+2024-06-05 17:28:39,918 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 17:28:39,928 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc submit; job_id is 4869
+2024-06-05 17:28:39,938 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 submit; job_id is 4870
+2024-06-05 17:29:31,018 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4869 finished
+2024-06-05 17:29:31,027 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 4870 finished
+2024-06-05 17:29:31,226 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 17:29:31,230 - dpdispatcher - INFO - job: 02a237a7e88294302640dfe5db883bfad7ee6f7d submit; job_id is 2812953
+2024-06-05 17:29:31,232 - dpdispatcher - INFO - job: d51fb81686efdf3fbbab224c28c87b3dbd64ef25 submit; job_id is 2812955
+2024-06-05 17:29:31,234 - dpdispatcher - INFO - job: 391ac16306c399d6729daa7830277978e04f2dcb submit; job_id is 2812958
+2024-06-05 17:30:00,289 - dpdispatcher - ERROR - 
+Traceback (most recent call last):
+  File "/home/yinbc/.conda/envs/deepmd_yichao/lib/python3.10/site-packages/dpdispatcher/submission.py", line 242, in run_submission
+    time.sleep(50)
+KeyboardInterrupt
+2024-06-05 17:30:00,289 - dpdispatcher - INFO - submission exit: 914328d339c29c8066358542f87de1535556cdfe
+2024-06-05 17:30:00,289 - dpdispatcher - INFO - at /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/work/914328d339c29c8066358542f87de1535556cdfe

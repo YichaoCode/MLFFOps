@@ -55,7 +55,7 @@ def gen_run(args, clean=False):
     try:
         if args.param and args.machine:
             if clean:
-                logging.info("Cleaning up files and folders before running...")
+                logging.debug("Cleaning up files and folders before running...")
                 clean_up()  # Call the clean_up function if clean is True
             
             if args.debug:
@@ -64,7 +64,7 @@ def gen_run(args, clean=False):
             run_iter(args.param, args.machine, restart_task=args.restart) 
             logging.info("Finished")
         else:
-            logging.error("Both PARAM and MACHINE arguments are required.")
+            logging.error("Bointh PARAM and MACHINE arguments are required.")
     except Exception as e:
         logging.error(f"Error during run: {e}", exc_info=True)
 
@@ -75,6 +75,7 @@ def main():
     custom_log_path = '/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/dpgen.log'
     logger = logging.getLogger('dpgen')
     logger.setLevel(logging.INFO)
+    # logger.setLevel(logging.DEBUG)
 
 
 
@@ -97,6 +98,7 @@ def main():
     # 配置 dpdispatcher logger
     dpdispatcher_logger = logging.getLogger('dpdispatcher')
     dpdispatcher_logger.setLevel(logging.INFO)
+    # dpdispatcher_logger.setLevel(logging.DEBUG)
     for handler in dpdispatcher_logger.handlers[:]:
         dpdispatcher_logger.removeHandler(handler)
     dpdispatcher_file_handler = logging.FileHandler(dpdispatcher_log_path)

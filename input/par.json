@@ -17,7 +17,7 @@
       "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.000.pb",
       "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.001.pb",
       "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.002.pb",
-      "/home/yinbc/test/dpgen/dpgen/pt1/iter.000000/01.model_devi/graph.003.pb"
+      "/home/yinbc/test/dpgen/dpgen/pt1/iter.0000training_init_model00/01.model_devi/graph.003.pb"
     ],
     "_training_reuse_iter": 1,
     "_training_reuse_old_ratio": 1.0,

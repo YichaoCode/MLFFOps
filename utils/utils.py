@@ -1,4 +1,4 @@
-# utils.py
+# utils/utils.py
 # created by Yichao
 
 import os
@@ -48,7 +48,7 @@ def make_model_devi_conf_name(sys_idx, conf_idx):
     return MODEL_DEVI_CONF_FMT % (sys_idx, conf_idx)
 
 
-def make_fp_task_name(sys_idx, counter):
+def make_fp_task_name(sys_idx, co_check_empty_iterunter):
     return "task." + fp_task_fmt % (sys_idx, counter)
 
 
@@ -63,7 +63,7 @@ def get_sys_index(task):
     return system_index
 
 
-def _check_empty_iter(iter_index, max_v=0):
+def check_empty_iter(iter_index, max_v=0):
     fp_path = os.path.join(make_iter_name(iter_index), fp_name)
     # check the number of collected data
     sys_data = glob.glob(os.path.join(fp_path, "data.*"))
