@@ -19,7 +19,7 @@ from dpgen.util import expand_sys_str
 # endregion
 
 
-def run_train(iter_index, jdata, mdata):
+def run_train(iter_index, jdata, mdata, base_dir):
     try:
         # load json param
         numb_models = jdata["numb_models"]
@@ -46,7 +46,9 @@ def run_train(iter_index, jdata, mdata):
 
         # paths
         iter_name = make_iter_name(iter_index)
-        work_path = os.path.join(iter_name, train_name)
+        # work_path = os.path.join(iter_name, train_name)
+        work_path = os.path.join(base_dir, iter_name, train_name)
+
         logging.debug("Work path: %s", work_path)
         
         # check if is copied

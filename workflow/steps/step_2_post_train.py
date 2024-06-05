@@ -19,12 +19,13 @@ from dpgen.util import convert_training_data_to_hdf5, expand_sys_str
 # endregion
 
 
-def post_train(iter_index, jdata, mdata):
+def post_train(iter_index, jdata, mdata, base_dir):
     # load json param
     numb_models = jdata["numb_models"]
     # paths
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, train_name)
+    # work_path = os.path.join(iter_name, train_name)
+    work_path = os.path.join(base_dir, iter_name, train_name)
     # check if is copied
     copy_flag = os.path.join(work_path, "copied")
     if os.path.isfile(copy_flag):

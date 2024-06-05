@@ -837,3 +837,35 @@ Traceback (most recent call last):
 KeyboardInterrupt
 2024-06-05 17:30:00,289 - dpdispatcher - INFO - submission exit: 914328d339c29c8066358542f87de1535556cdfe
 2024-06-05 17:30:00,289 - dpdispatcher - INFO - at /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/work/914328d339c29c8066358542f87de1535556cdfe
+2024-06-05 18:13:10,167 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 18:13:10,176 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc submit; job_id is 4871
+2024-06-05 18:13:10,185 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 submit; job_id is 4872
+2024-06-05 18:14:01,266 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4871 finished
+2024-06-05 18:14:01,275 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 4872 finished
+2024-06-05 18:14:57,636 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 18:14:57,649 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc submit; job_id is 4873
+2024-06-05 18:14:57,659 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 submit; job_id is 4874
+2024-06-05 18:15:48,693 - dpdispatcher - INFO - job: ea5842edce1fb0cc2665155cf7af34cd10fd93dc 4873 finished
+2024-06-05 18:15:48,702 - dpdispatcher - INFO - job: a127204d78332446c833f63baa6a3b0bf25c1fb4 4874 finished
+2024-06-05 18:15:48,872 - dpdispatcher - INFO - info:check_all_finished: False
+2024-06-05 18:15:48,875 - dpdispatcher - INFO - job: 02a237a7e88294302640dfe5db883bfad7ee6f7d submit; job_id is 2825841
+2024-06-05 18:15:48,877 - dpdispatcher - INFO - job: d51fb81686efdf3fbbab224c28c87b3dbd64ef25 submit; job_id is 2825843
+2024-06-05 18:15:48,880 - dpdispatcher - INFO - job: 391ac16306c399d6729daa7830277978e04f2dcb submit; job_id is 2825846
+2024-06-05 18:16:40,065 - dpdispatcher - INFO - job: 02a237a7e88294302640dfe5db883bfad7ee6f7d 2825841 terminated;fail_cout is 1; resubmitting job
+2024-06-05 18:16:40,163 - dpdispatcher - INFO - job:02a237a7e88294302640dfe5db883bfad7ee6f7d re-submit after terminated; new job_id is 2826187
+2024-06-05 18:16:40,404 - dpdispatcher - INFO - job:02a237a7e88294302640dfe5db883bfad7ee6f7d job_id:2826187 after re-submitting; the state now is <JobStatus.running: 3>
+2024-06-05 18:16:40,404 - dpdispatcher - INFO - job: d51fb81686efdf3fbbab224c28c87b3dbd64ef25 2825843 terminated;fail_cout is 1; resubmitting job
+2024-06-05 18:16:40,407 - dpdispatcher - INFO - job:d51fb81686efdf3fbbab224c28c87b3dbd64ef25 re-submit after terminated; new job_id is 2826197
+2024-06-05 18:16:40,648 - dpdispatcher - INFO - job:d51fb81686efdf3fbbab224c28c87b3dbd64ef25 job_id:2826197 after re-submitting; the state now is <JobStatus.running: 3>
+2024-06-05 18:16:40,648 - dpdispatcher - INFO - job: 391ac16306c399d6729daa7830277978e04f2dcb 2825846 terminated;fail_cout is 1; resubmitting job
+2024-06-05 18:16:40,651 - dpdispatcher - INFO - job:391ac16306c399d6729daa7830277978e04f2dcb re-submit after terminated; new job_id is 2826207
+2024-06-05 18:16:40,892 - dpdispatcher - INFO - job:391ac16306c399d6729daa7830277978e04f2dcb job_id:2826207 after re-submitting; the state now is <JobStatus.running: 3>
+2024-06-05 18:17:30,974 - dpdispatcher - INFO - job: 02a237a7e88294302640dfe5db883bfad7ee6f7d 2826187 terminated;fail_cout is 2; resubmitting job
+2024-06-05 18:17:30,977 - dpdispatcher - INFO - job:02a237a7e88294302640dfe5db883bfad7ee6f7d re-submit after terminated; new job_id is 2826411
+2024-06-05 18:17:31,218 - dpdispatcher - INFO - job:02a237a7e88294302640dfe5db883bfad7ee6f7d job_id:2826411 after re-submitting; the state now is <JobStatus.running: 3>
+2024-06-05 18:17:31,218 - dpdispatcher - INFO - job: d51fb81686efdf3fbbab224c28c87b3dbd64ef25 2826197 terminated;fail_cout is 2; resubmitting job
+2024-06-05 18:17:31,221 - dpdispatcher - INFO - job:d51fb81686efdf3fbbab224c28c87b3dbd64ef25 re-submit after terminated; new job_id is 2826423
+2024-06-05 18:17:31,462 - dpdispatcher - INFO - job:d51fb81686efdf3fbbab224c28c87b3dbd64ef25 job_id:2826423 after re-submitting; the state now is <JobStatus.running: 3>
+2024-06-05 18:17:31,462 - dpdispatcher - INFO - job: 391ac16306c399d6729daa7830277978e04f2dcb 2826207 terminated;fail_cout is 2; resubmitting job
+2024-06-05 18:17:31,465 - dpdispatcher - INFO - job:391ac16306c399d6729daa7830277978e04f2dcb re-submit after terminated; new job_id is 2826433
+2024-06-05 18:17:31,710 - dpdispatcher - INFO - job:391ac16306c399d6729daa7830277978e04f2dcb job_id:2826433 after re-submitting; the state now is <JobStatus.running: 3>

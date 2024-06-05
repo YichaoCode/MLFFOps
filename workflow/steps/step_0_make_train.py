@@ -148,7 +148,7 @@ def check_and_copy_model(iter_index, params):
         return True
 
 
-def setup_work_path(iter_index, train_name):
+def setup_work_path_old(iter_index, train_name):
     iter_name = make_iter_name(iter_index)
     work_path = os.path.join(iter_name, train_name)
     abs_work_path = os.path.abspath(work_path)
@@ -157,6 +157,20 @@ def setup_work_path(iter_index, train_name):
     logging.debug(f"Work path created: {abs_work_path}")
     return abs_work_path
 
+def setup_work_path(iter_index, train_name):
+    current_time = time.strftime("%Y%m%d-%H%M%S")
+    work_dir = os.path.join("output", "tasks", current_time)
+    logging.debug(f"Base directory for current run created: {work_dir}")
+    os.makedirs(work_dir, exist_ok=True)
+
+    iter_name = make_iter_name(iter_index)
+    work_path = os.path.join(work_dir, iter_name, train_name)
+
+    abs_work_path = os.path.abspath(work_path)
+    logging.debug(f"Creating work path: {abs_work_path}")
+    create_path(work_path)
+    logging.debug(f"Work path created: {abs_work_path}")
+    return abs_work_path, work_dir
 
 def link_init_data(iter_index, work_path, init_data_prefix):
     cwd = os.getcwd()
@@ -235,8 +249,9 @@ def make_train(iter_index, jdata, mdata):
         return
 
     # Set up paths and link data
-    work_path = setup_work_path(iter_index, train_name)
+    work_path, work_dir = setup_work_path(iter_index, train_name)
     cwd = link_init_data(iter_index, work_path, params['init_data_prefix'])
+    base_dir = work_dir
 
     init_data_sys = []
     init_batch_size = []
@@ -499,6 +514,8 @@ def make_train(iter_index, jdata, mdata):
     # HDF5 format for training data
     if jdata.get("one_h5", False):
         convert_training_data_to_hdf5(input_files, os.path.join(work_path, "data.hdf5"))
+
+    return base_dir
 
 
 # region
