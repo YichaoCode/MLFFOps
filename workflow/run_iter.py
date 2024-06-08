@@ -184,7 +184,7 @@ def run_iter(param_file, machine_file, restart_task=None):
                 elif jj == 3:
                     log_iter("make_model_devi", ii, jj)
                     logger.info(f"Running task {jj:02d} (make_model_devi) for iteration {ii:03d}")
-                    cont = make_model_devi(ii, jdata, mdata)
+                    cont = make_model_devi(ii, jdata, mdata, base_dir)
                     logger.info(f"Task {jj:02d} (make_model_devi) for iteration {ii:03d} completed")
 
                     if not cont:
@@ -194,13 +194,13 @@ def run_iter(param_file, machine_file, restart_task=None):
                 elif jj == 4:
                     log_iter("run_model_devi", ii, jj)
                     logger.info(f"Running task {jj:02d} (run_model_devi) for iteration {ii:03d}")
-                    run_model_devi(ii, jdata, mdata)
+                    run_model_devi(ii, jdata, mdata, base_dir)
                     logger.info(f"Task {jj:02d} (run_model_devi) for iteration {ii:03d} completed")
 
                 elif jj == 5:
                     log_iter("post_model_devi", ii, jj)
                     logger.info(f"Running task {jj:02d} (post_model_devi) for iteration {ii:03d}")
-                    post_model_devi(ii, jdata, mdata)
+                    post_model_devi(ii, jdata, mdata, base_dir)
                     logger.info(f"Task {jj:02d} (post_model_devi) for iteration {ii:03d} completed")
 
                 elif jj == 6:
@@ -212,13 +212,13 @@ def run_iter(param_file, machine_file, restart_task=None):
                 elif jj == 7:
                     log_iter("run_fp", ii, jj)
                     logger.info(f"Running task {jj:02d} (run_fp) for iteration {ii:03d}")
-                    run_fp(ii, jdata, mdata)
+                    run_fp(ii, jdata, mdata, base_dir)
                     logger.info(f"Task {jj:02d} (run_fp) for iteration {ii:03d} completed")
 
                 elif jj == 8:
                     log_iter("post_fp", ii, jj)
                     logger.info(f"Running task {jj:02d} (post_fp) for iteration {ii:03d}")
-                    post_fp(ii, jdata)
+                    post_fp(ii, jdata, base_dir)
                     logger.info(f"Task {jj:02d} (post_fp) for iteration {ii:03d} completed")
 
                 else:

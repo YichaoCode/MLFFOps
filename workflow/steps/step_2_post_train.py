@@ -27,7 +27,7 @@ def post_train(iter_index, jdata, mdata, base_dir):
     # work_path = os.path.join(iter_name, train_name)
     work_path = os.path.join(base_dir, iter_name, train_name)
     # check if is copied
-    copy_flag = os.path.join(work_path, "copied")
+    copy_flag = os.path.join(base_dir, work_path, "copied")
     if os.path.isfile(copy_flag):
         log_task("copied model, do not post train")
         return

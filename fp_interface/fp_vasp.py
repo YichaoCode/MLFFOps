@@ -809,7 +809,7 @@ def make_fp_vasp(iter_index, jdata):
     make_fp_vasp_cp_cvasp(iter_index, jdata)
 
 
-def post_fp_vasp(iter_index, jdata, rfailed=None):
+def post_fp_vasp(iter_index, jdata, base_dir, rfailed=None):
     ratio_failed = rfailed if rfailed else jdata.get("ratio_failed", 0.05)
     model_devi_engine = jdata.get("model_devi_engine", "lammps")
     if model_devi_engine != "calypso":
@@ -818,7 +818,7 @@ def post_fp_vasp(iter_index, jdata, rfailed=None):
     use_ele_temp = jdata.get("use_ele_temp", 0)
 
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, fp_name)
+    work_path = os.path.join(base_dir, iter_name, fp_name)
     fp_tasks = glob.glob(os.path.join(work_path, "task.*"))
     fp_tasks.sort()
     if len(fp_tasks) == 0:

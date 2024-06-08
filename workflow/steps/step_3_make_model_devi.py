@@ -33,7 +33,7 @@ from utils.utils import (
 # endregion
 
 
-def make_model_devi(iter_index, jdata, mdata):
+def make_model_devi(iter_index, jdata, mdata, base_dir):
     # The MD engine to perform model deviation
     # Default is lammps
     model_devi_engine = jdata.get("model_devi_engine", "lammps")
@@ -41,7 +41,7 @@ def make_model_devi(iter_index, jdata, mdata):
     model_devi_jobs = jdata["model_devi_jobs"]
     if model_devi_engine != "calypso":
         if iter_index >= len(model_devi_jobs):
-            return False
+            return Falsew
     else:
         # mode 1: generate structures according to the user-provided input.dat file, so calypso_input_path and model_devi_max_iter are needed
         run_mode = 1
@@ -105,7 +105,7 @@ def make_model_devi(iter_index, jdata, mdata):
     train_path = os.path.join(iter_name, TRAIN_NAME)
     train_path = os.path.abspath(train_path)
     models = sorted(glob.glob(os.path.join(train_path, "graph*pb")))
-    work_path = os.path.join(iter_name, model_devi_name)
+    work_path = os.path.join(base_dir, iter_name, model_devi_name)
     create_path(work_path)
     if model_devi_engine == "calypso":
         _calypso_run_opt_path = os.path.join(work_path, calypso_run_opt_name)

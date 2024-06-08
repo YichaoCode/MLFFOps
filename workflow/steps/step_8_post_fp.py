@@ -15,7 +15,7 @@ from config.config import *
 # endregion
 
 
-def post_fp(iter_index, jdata):
+def post_fp(iter_index, jdata, base_dir):
     """Post-process first-principles calculations.
 
     Args:
@@ -24,7 +24,7 @@ def post_fp(iter_index, jdata):
     """
     fp_style = jdata['fp_style']
     if fp_style == 'vasp':
-        post_fp_vasp(iter_index, jdata)
+        post_fp_vasp(iter_index, jdata, base_dir)
     elif fp_style == 'pwscf':
         post_fp_pwscf(iter_index, jdata)
     elif fp_style == 'siesta':

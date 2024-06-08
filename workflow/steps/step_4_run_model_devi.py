@@ -22,18 +22,18 @@ from config.config import *
 # endregion
 
 
-def run_model_devi(iter_index, jdata, mdata):
+def run_model_devi(iter_index, jdata, mdata, base_dir):
 
     model_devi_engine = jdata.get("model_devi_engine", "lammps")
     if model_devi_engine != "calypso":
-        run_md_model_devi(iter_index, jdata, mdata)
+        run_md_model_devi(iter_index, jdata, mdata, base_dir)
     else:
         run_calypso_model_devi(iter_index, jdata, mdata)
 
 
 
 
-def run_md_model_devi(iter_index, jdata, mdata):
+def run_md_model_devi(iter_index, jdata, mdata, base_dir):
     logging.info("Running MD model deviation for iteration %d", iter_index)
     
     model_devi_exec = mdata["model_devi_command"]
@@ -52,7 +52,8 @@ def run_md_model_devi(iter_index, jdata, mdata):
     logging.info("Merge trajectories: %s", model_devi_merge_traj)
 
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, model_devi_name)
+    # work_path = os.path.join(iter_name, model_devi_name)
+    work_path = os.path.join(base_dir, iter_name, model_devi_name)
     assert os.path.isdir(work_path), f"Work path {work_path} does not exist"
     logging.info("Work path: %s", work_path)
 

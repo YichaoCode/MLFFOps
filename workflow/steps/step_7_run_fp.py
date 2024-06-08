@@ -24,7 +24,7 @@ from dpgen.dispatcher.Dispatcher import make_submission
 
 
 
-def run_fp(iter_index, jdata, mdata):
+def run_fp(iter_index, jdata, mdata, base_dir):
     fp_style = jdata["fp_style"]
     fp_pp_files = jdata.get("fp_pp_files", [])
 
@@ -52,6 +52,7 @@ def run_fp(iter_index, jdata, mdata):
             backward_files,
             _vasp_check_fin,
             forward_common_files=forward_common_files,
+            base_dir=base_dir
         )
     elif fp_style == "pwscf":
         forward_files = ["input"] + fp_pp_files
@@ -64,6 +65,7 @@ def run_fp(iter_index, jdata, mdata):
             backward_files,
             _qe_check_fin,
             log_file="output",
+            base_dir=base_dir
         )
     elif fp_style == "abacus":
         fp_params = {}
@@ -94,6 +96,7 @@ def run_fp(iter_index, jdata, mdata):
             backward_files,
             _abacus_scf_check_fin,
             log_file="output",
+            base_dir=base_dir
         )
     elif fp_style == "siesta":
         forward_files = ["input"] + fp_pp_files
@@ -106,6 +109,7 @@ def run_fp(iter_index, jdata, mdata):
             backward_files,
             _siesta_check_fin,
             log_file="output",
+            base_dir=base_dir
         )
     elif fp_style == "gaussian":
         forward_files = ["input"]
@@ -118,6 +122,7 @@ def run_fp(iter_index, jdata, mdata):
             backward_files,
             _gaussian_check_fin,
             log_file="output",
+            base_dir=base_dir
         )
     elif fp_style == "cp2k":
         forward_files = ["input.inp", "coord.xyz"]
@@ -130,6 +135,7 @@ def run_fp(iter_index, jdata, mdata):
             backward_files,
             _cp2k_check_fin,
             log_file="output",
+            base_dir=base_dir
         )
     elif fp_style == "pwmat":
         forward_files = ["atom.config", "etot.input"] + fp_pp_files
@@ -142,6 +148,7 @@ def run_fp(iter_index, jdata, mdata):
             backward_files,
             _pwmat_check_fin,
             log_file="output",
+            base_dir=base_dir
         )
     elif fp_style == "amber/diff":
         forward_files = ["rc.nc"]
@@ -169,6 +176,7 @@ def run_fp(iter_index, jdata, mdata):
             None,
             log_file="output",
             forward_common_files=forward_common_files,
+            base_dir=base_dir
         )
     else:
         raise RuntimeError("unsupported fp style")
@@ -183,6 +191,7 @@ def run_fp_inner(
     check_fin,
     log_file="fp.log",
     forward_common_files=[],
+    base_dir=None
 ):
     fp_command = mdata["fp_command"]
     fp_group_size = mdata["fp_group_size"]
@@ -190,7 +199,7 @@ def run_fp_inner(
     mark_failure = fp_resources.get("mark_failure", False)
 
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, fp_name)
+    work_path = os.path.join(base_dir, iter_name, fp_name)
 
     fp_tasks = glob.glob(os.path.join(work_path, "task.*"))
     fp_tasks.sort()
