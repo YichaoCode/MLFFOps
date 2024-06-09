@@ -52,37 +52,67 @@ def run_md_model_devi(iter_index, jdata, mdata, base_dir):
     logging.info("Merge trajectories: %s", model_devi_merge_traj)
 
     iter_name = make_iter_name(iter_index)
-    # work_path = os.path.join(iter_name, model_devi_name)
-    work_path = os.path.join(base_dir, iter_name, model_devi_name)
+    logging.debug("Generated iteration name: %s", iter_name)
+
+
+
+
+
+
+
+
+
+    work_path = os.path.join(base_dir, iter_name, model_devi_name,'confs')
+    logging.debug("Joining paths to create work_path...")
+    logging.debug("  base_dir:        %s", base_dir)
+    logging.debug("  iter_name:       %s", iter_name)
+    logging.debug("  model_devi_name: %s", model_devi_name)
+    logging.debug("  Joined work_path: %s", work_path)
+
     assert os.path.isdir(work_path), f"Work path {work_path} does not exist"
     logging.info("Work path: %s", work_path)
 
+    logging.debug("Searching for tasks in work_path...")
+    logging.debug("  Work path: %s", work_path)
+    logging.debug("  Pattern: task.*")
+
+
     all_task = glob.glob(os.path.join(work_path, "task.*"))
     all_task.sort()
-    logging.info("Found %d tasks", len(all_task))
-    
-    fp = open(os.path.join(work_path, "cur_job.json"), "r")
-    cur_job = json.load(fp)
-    logging.info("Current job loaded from %s", os.path.join(work_path, "cur_job.json"))
+    logging.debug("  Found %d tasks:", len(all_task))
+    for task in all_task:
+        logging.debug("    %s", task)
+    logging.info("Found %d tasks in total", len(all_task))
+
+
+
+
+    work_path = os.path.join(base_dir, iter_name, model_devi_name)
+
+
+
+
+    logging.debug("Loading current job from cur_job.json...")
+    cur_job_file = os.path.join(work_path, "cur_job.json")
+    logging.debug("  Current job file: %s", cur_job_file)
+    with open(cur_job_file, "r") as fp:
+        cur_job = json.load(fp)
+    logging.debug("  Loaded current job: %s", cur_job)
+    logging.info("Current job loaded from %s", cur_job_file)
 
     run_tasks_ = all_task
+    logging.debug("Extracting basenames from run_tasks_...")
     run_tasks = [os.path.basename(ii) for ii in run_tasks_]
+    logging.debug("  Extracted basenames: %s", run_tasks)
     logging.info("Running tasks: %s", run_tasks)
 
-
-
-
-
-
-
-
-
-    
-    # 记录在工作文件夹中搜索模型文件
     logging.info("Searching for model files in pattern 'graph*pb' under working folder %s...", work_path)
-
-    # 使用 glob 搜索模型文件
+    logging.debug("  Work path: %s", work_path)
+    logging.debug("  Pattern: graph*pb")
     all_models = glob.glob(os.path.join(work_path, "graph*pb"))
+    logging.debug("  Found %d model files:", len(all_models))
+    for model in all_models:
+        logging.debug("    %s", model)
 
     # 记录找到的模型文件数量和具体的文件路径列表  
     logging.info("Found %d model files: %s", len(all_models), all_models)
@@ -267,6 +297,21 @@ def run_md_model_devi(iter_index, jdata, mdata, base_dir):
         )
 
     elif Version(api_version) >= Version("1.0"):
+        work_path = os.path.join(work_path, 'confs')
+
+        logging.debug("Creating submission with the following parameters:")
+        logging.debug("  model_devi_machine: %s", mdata["model_devi_machine"])
+        logging.debug("  model_devi_resources: %s", mdata["model_devi_resources"])
+        logging.debug("  commands: %s", commands)
+        logging.debug("  work_path: %s", work_path)
+        logging.debug("  run_tasks: %s", run_tasks)
+        logging.debug("  group_size: %d", model_devi_group_size)
+        logging.debug("  forward_common_files: %s", model_names)
+        logging.debug("  forward_files: %s", forward_files)
+        logging.debug("  backward_files: %s", backward_files)
+        logging.debug("  outlog: model_devi.log")
+        logging.debug("  errlog: model_devi.log")
+
         submission = make_submission(
             mdata["model_devi_machine"],
             mdata["model_devi_resources"],
@@ -280,7 +325,10 @@ def run_md_model_devi(iter_index, jdata, mdata, base_dir):
             outlog="model_devi.log",
             errlog="model_devi.log",
         )
-        logging.info("Submission created for model deviation")
+
+        logging.info("Submission object created: %s", submission)
+
+        logging.info("Running submission...")
         submission.run_submission()
         logging.info("Model deviation submission completed")
 

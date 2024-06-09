@@ -5,6 +5,7 @@ import os
 import shutil
 import numpy as np
 import dpdata
+import logging
 from config import *
 
 from utils.path_utils import find_only_one_key
@@ -41,11 +42,39 @@ def get_job_names(jdata):
 
 
 def make_model_devi_task_name(sys_idx, task_idx):
-    return "task." + MODEL_DEVI_TASK_FMT % (sys_idx, task_idx)
+    logging.debug("Generating model deviation task name...")
+    logging.debug("Format string: %s", "task." + MODEL_DEVI_TASK_FMT)
+    logging.debug("System index: %d", sys_idx)
+    logging.debug("Task index: %d", task_idx)
+
+    task_name = "task." + MODEL_DEVI_TASK_FMT % (sys_idx, task_idx)
+
+    logging.debug("Generated task name: %s", task_name)
+    return task_name
 
 
-def make_model_devi_conf_name(sys_idx, conf_idx):
-    return MODEL_DEVI_CONF_FMT % (sys_idx, conf_idx)
+def make_model_devi_conf_name(sys_idx, task_idx):
+    logging.debug("Generating model deviation task name...")
+    logging.debug("Format string: %s", "task." + MODEL_DEVI_TASK_FMT)
+    logging.debug("System index: %d", sys_idx)
+    logging.debug("Task index: %d", task_idx)
+
+    task_name = "task." + MODEL_DEVI_TASK_FMT % (sys_idx, task_idx)
+
+    logging.debug("Generated task name: %s", task_name)
+    return task_name
+
+
+def make_model_devi_conf_name_save(sys_idx, conf_idx):
+    logging.debug("Generating model deviation conf name...")
+    logging.debug("Format string: %s", MODEL_DEVI_CONF_FMT)
+    logging.debug("System index: %d", sys_idx)
+    logging.debug("Configuration index: %d", conf_idx)
+
+    conf_name = MODEL_DEVI_CONF_FMT % (sys_idx, conf_idx)
+
+    logging.debug("Generated conf name: %s", conf_name)
+    return conf_name
 
 
 def make_fp_task_name(sys_idx, co_check_empty_iterunter):

@@ -1,4 +1,4 @@
-# step_3_make_model_devi.py
+# workflow/steps/step_3_make_model_devi.py
 # Created by Yichao
 
 
@@ -7,7 +7,10 @@ import os
 import glob
 import json
 import dpdata
+import shutil
+import logging
 
+from dpgen.generator.lib.make_calypso import _make_model_devi_buffet
 from dpgen.generator.lib.utils import (
     create_path,
     make_iter_name,
@@ -27,7 +30,7 @@ from config.config import *
 
 from utils.utils import (
     expand_idx,
-    make_model_devi_conf_name
+    make_model_devi_conf_name, poscar_shuffle
 )
 
 # endregion
@@ -41,7 +44,7 @@ def make_model_devi(iter_index, jdata, mdata, base_dir):
     model_devi_jobs = jdata["model_devi_jobs"]
     if model_devi_engine != "calypso":
         if iter_index >= len(model_devi_jobs):
-            return Falsew
+            return False
     else:
         # mode 1: generate structures according to the user-provided input.dat file, so calypso_input_path and model_devi_max_iter are needed
         run_mode = 1
@@ -101,12 +104,56 @@ def make_model_devi(iter_index, jdata, mdata, base_dir):
         cur_systems = [os.path.abspath(ii) for ii in cur_systems]
         conf_systems.append(cur_systems)
 
+
+
+
+
+
+
+
+
+
+    logging.debug("TRAIN_NAME: %s", TRAIN_NAME)
+
     iter_name = make_iter_name(iter_index)
+    logging.debug("Generated iteration name: %s", iter_name)
+
     train_path = os.path.join(iter_name, TRAIN_NAME)
+    logging.debug("Train path before abspath: %s", train_path)
+
     train_path = os.path.abspath(train_path)
+    logging.debug("Train path after abspath: %s", train_path)
+
+    logging.debug("Searching for models in train_path...")
+    logging.debug("  Train path: %s", train_path)
+    logging.debug("  Pattern: graph*pb")
     models = sorted(glob.glob(os.path.join(train_path, "graph*pb")))
+    logging.debug("  Found %d models:", len(models))
+    for model in models:
+        logging.debug("    %s", model)
+
+    logging.debug("base_dir: %s", base_dir)
+    logging.debug("iter_name: %s", iter_name)
+    logging.debug("model_devi_name: %s", model_devi_name)
+
     work_path = os.path.join(base_dir, iter_name, model_devi_name)
+    logging.debug("Joining paths to create work_path...")
+    logging.debug("  base_dir:        %s", base_dir)
+    logging.debug("  iter_name:       %s", iter_name)
+    logging.debug("  model_devi_name: %s", model_devi_name)
+    logging.debug("  Joined work_path: %s", work_path)
+
+    logging.debug("Creating work_path...")
     create_path(work_path)
+    logging.debug("Work path created: %s", work_path)
+
+
+
+
+
+
+
+
     if model_devi_engine == "calypso":
         _calypso_run_opt_path = os.path.join(work_path, calypso_run_opt_name)
         calypso_model_devi_path = os.path.join(work_path, calypso_model_devi_name)
