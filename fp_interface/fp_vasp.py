@@ -1,7 +1,5 @@
 # fp_vasp.py
 # created by Yichao
-
-
 import os
 import glob
 import json
@@ -401,6 +399,7 @@ def _make_fp_vasp_inner(
                 poscar_name = "{}.cluster.{}.POSCAR".format(conf_name, jj)
                 new_system = take_cluster(conf_name, type_map, jj, jdata)
                 new_system.to_vasp_poscar(poscar_name)
+
             fp_task_name = make_fp_task_name(int(ss), cc)
             fp_task_path = os.path.join(work_path, fp_task_name)
             create_path(fp_task_path)
@@ -565,10 +564,14 @@ def make_vasp_incar_ele_temp(jdata, filename, ele_temp, nbands_esti=None):
         incar.write_file("INCAR")
 
 
-def make_fp_vasp_incar(iter_index, jdata, nbands_esti=None):
+def make_fp_vasp_incar(iter_index, jdata, base_dir, nbands_esti=None):
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, fp_name)
-    logging.info(f"Work path: {work_path}")
+    work_path = os.path.join(base_dir, iter_name, fp_name)
+    logging.debug(f"Work path: {work_path}")
+
+    # 获取工作路径的绝对路径
+    abs_work_path = os.path.abspath(work_path)
+    logging.debug(f"Absolute work path: {abs_work_path}")
 
     fp_tasks = glob.glob(os.path.join(work_path, "task.*"))
     fp_tasks.sort()
@@ -604,14 +607,14 @@ def make_fp_vasp_incar(iter_index, jdata, nbands_esti=None):
         logging.info(f"Changed back to directory: {os.getcwd()}")
 
 
-def make_fp_vasp_cp_cvasp(iter_index, jdata):
+def make_fp_vasp_cp_cvasp(iter_index, jdata, base_dir):
     # Move cvasp interface to jdata
     if ("cvasp" in jdata) and (jdata["cvasp"] == True):
         pass
     else:
         return
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, fp_name)
+    work_path = os.path.join(base_dir, iter_name, fp_name)
     fp_tasks = glob.glob(os.path.join(work_path, "task.*"))
     fp_tasks.sort()
     if len(fp_tasks) == 0:
@@ -624,9 +627,9 @@ def make_fp_vasp_cp_cvasp(iter_index, jdata):
         os.chdir(cwd)
 
 
-def make_fp_vasp_kp(iter_index, jdata):
+def make_fp_vasp_kp(iter_index, jdata, base_dir):
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, fp_name)
+    work_path = os.path.join(base_dir, iter_name, fp_name)
     fp_aniso_kspacing = jdata.get("fp_aniso_kspacing")
 
     fp_tasks = glob.glob(os.path.join(work_path, "task.*"))
@@ -690,7 +693,7 @@ def _link_fp_vasp_pp(iter_index, jdata):
         os.chdir(cwd)
 
 
-def sys_link_fp_vasp_pp(iter_index, jdata):
+def sys_link_fp_vasp_pp(iter_index, jdata, base_dir):
     fp_pp_path = jdata["fp_pp_path"]
     fp_pp_files = jdata["fp_pp_files"]
     fp_pp_path = os.path.abspath(fp_pp_path)
@@ -701,7 +704,7 @@ def sys_link_fp_vasp_pp(iter_index, jdata):
     # ), "size of fp_pp_files should be the same as the size of type_map"
 
     iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, fp_name)
+    work_path = os.path.join(base_dir, iter_name, fp_name)
 
     fp_tasks = glob.glob(os.path.join(work_path, "task.*"))
     fp_tasks.sort()
@@ -734,39 +737,105 @@ def sys_link_fp_vasp_pp(iter_index, jdata):
             os.chdir(cwd)
 
 
-def _make_fp_vasp_configs(iter_index, jdata):
-    fp_task_max = jdata["fp_task_max"]
-    model_devi_skip = jdata["model_devi_skip"]
-    type_map = jdata["type_map"]
-    iter_name = make_iter_name(iter_index)
-    work_path = os.path.join(iter_name, fp_name)
-    create_path(work_path)
 
-    modd_path = os.path.join(iter_name, model_devi_name)
+
+
+def _make_fp_vasp_configs(iter_index, jdata, base_dir):
+    # 从输入的数据中获取fp_task_max（最大任务数）参数
+    # Retrieve the fp_task_max (maximum number of tasks) parameter from the input data
+    fp_task_max = jdata["fp_task_max"]
+    logging.debug(f"fp_task_max: {fp_task_max}")
+
+    # 获取model_devi_skip（模型偏差跳过）参数
+    # Retrieve the model_devi_skip (model deviation skip) parameter
+    model_devi_skip = jdata["model_devi_skip"]
+    logging.debug(f"model_devi_skip: {model_devi_skip}")
+
+    # 获取type_map（类型映射）参数
+    # Retrieve the type_map (type mapping) parameter
+    type_map = jdata["type_map"]
+    logging.debug(f"type_map: {type_map}")
+
+    # 使用迭代索引生成迭代名称
+    # Generate the iteration name using the iteration index
+    iter_name = make_iter_name(iter_index)
+    logging.debug(f"iter_name: {iter_name}")
+
+    # 创建工作路径，将迭代名称和fp_name（可能是一个全局变量或常量）连接在一起
+    # Create the work path by joining the iteration name with fp_name (possibly a global variable or constant)
+    work_path = os.path.join(base_dir, iter_name, fp_name)
+    logging.debug(f"work_path: {work_path}")
+
+    # 创建该工作路径的目录
+    # Create the directory for the work path
+    create_path(work_path)
+    logging.debug(f"Created path: {work_path}")
+
+    # 创建模型偏差路径，将迭代名称和model_devi_name（可能是一个全局变量或常量）连接在一起
+    # Create the model deviation path by joining the iteration name with model_devi_name (possibly a global variable or constant)
+    modd_path = os.path.join(base_dir, iter_name, model_devi_name)
+    logging.debug(f"modd_path: {modd_path}")
+
+    # 初始化task_min（最小任务数）为-1
+    # Initialize task_min (minimum number of tasks) to -1
     task_min = -1
-    if os.path.isfile(os.path.join(modd_path, "cur_job.json")):
-        cur_job = json.load(open(os.path.join(modd_path, "cur_job.json"), "r"))
+    logging.debug(f"Initial task_min: {task_min}")
+
+    # 检查模型偏差路径下是否存在cur_job.json文件
+    # Check if the cur_job.json file exists in the model deviation path
+    if os.path.isfile(os.path.join(base_dir, modd_path, "cur_job.json")):
+        # 如果存在，读取该文件的内容
+        # If it exists, read the contents of the file
+        cur_job = json.load(open(os.path.join(base_dir, modd_path, "cur_job.json"), "r"))
+        logging.debug(f"Loaded cur_job.json: {cur_job}")
+
+        # 如果文件中存在task_min字段，则将其值赋给task_min变量
+        # If the task_min field exists in the file, assign its value to the task_min variable
         if "task_min" in cur_job:
             task_min = cur_job["task_min"]
+            logging.debug(f"Updated task_min from cur_job: {task_min}")
     else:
+        # 如果文件不存在，初始化cur_job为空字典
+        # If the file does not exist, initialize cur_job as an empty dictionary
         cur_job = {}
-    # support iteration dependent trust levels
+        logging.debug("cur_job.json not found, initialized cur_job as empty dictionary")
+
+    # 支持基于迭代的信任水平
+    # Support iteration dependent trust levels
+    # 从cur_job获取model_devi_v_trust_lo（模型偏差电压信任下限），如果不存在则从jdata获取默认值
+    # Retrieve model_devi_v_trust_lo (model deviation voltage trust lower bound) from cur_job, or from jdata if not present
     v_trust_lo = cur_job.get(
         "model_devi_v_trust_lo", jdata.get("model_devi_v_trust_lo", 1e10)
     )
+    logging.debug(f"v_trust_lo: {v_trust_lo}")
+
+    # 从cur_job获取model_devi_v_trust_hi（模型偏差电压信任上限），如果不存在则从jdata获取默认值
+    # Retrieve model_devi_v_trust_hi (model deviation voltage trust upper bound) from cur_job, or from jdata if not present
     v_trust_hi = cur_job.get(
         "model_devi_v_trust_hi", jdata.get("model_devi_v_trust_hi", 1e10)
     )
+    logging.debug(f"v_trust_hi: {v_trust_hi}")
+
+    # 获取model_devi_f_trust_lo（模型偏差力信任下限），优先从cur_job获取，否则从jdata获取
+    # Retrieve model_devi_f_trust_lo (model deviation force trust lower bound), preferring cur_job if available, otherwise from jdata
     if cur_job.get("model_devi_f_trust_lo") is not None:
         f_trust_lo = cur_job.get("model_devi_f_trust_lo")
     else:
         f_trust_lo = jdata["model_devi_f_trust_lo"]
+    logging.debug(f"f_trust_lo: {f_trust_lo}")
+
+    # 获取model_devi_f_trust_hi（模型偏差力信任上限），优先从cur_job获取，否则从jdata获取
+    # Retrieve model_devi_f_trust_hi (model deviation force trust upper bound), preferring cur_job if available, otherwise from jdata
     if cur_job.get("model_devi_f_trust_hi") is not None:
         f_trust_hi = cur_job.get("model_devi_f_trust_hi")
     else:
         f_trust_hi = jdata["model_devi_f_trust_hi"]
+    logging.debug(f"f_trust_hi: {f_trust_hi}")
 
-    # make configs
+    # 生成配置
+    # Generate configurations
+    # 调用内部函数_make_fp_vasp_inner，传递必要的参数生成fp_tasks
+    # Call the inner function _make_fp_vasp_inner with the necessary parameters to generate fp_tasks
     fp_tasks = _make_fp_vasp_inner(
         iter_index,
         modd_path,
@@ -782,12 +851,16 @@ def _make_fp_vasp_configs(iter_index, jdata):
         type_map,
         jdata,
     )
+    logging.debug(f"Generated fp_tasks: {fp_tasks}")
+
+    # 返回生成的fp_tasks
+    # Return the generated fp_tasks
     return fp_tasks
 
 
-def make_fp_vasp(iter_index, jdata):
+def make_fp_vasp(iter_index, jdata, base_dir):
     # make config
-    fp_tasks = _make_fp_vasp_configs(iter_index, jdata)
+    fp_tasks = _make_fp_vasp_configs(iter_index, jdata, base_dir)
     if len(fp_tasks) == 0:
         return
     # abs path for fp_incar if it exists
@@ -800,13 +873,13 @@ def make_fp_vasp(iter_index, jdata):
         nbe = None
     # order is critical!
     # 1, create potcar
-    sys_link_fp_vasp_pp(iter_index, jdata)
+    sys_link_fp_vasp_pp(iter_index, jdata, base_dir)
     # 2, create incar
-    make_fp_vasp_incar(iter_index, jdata, nbands_esti=nbe)
+    make_fp_vasp_incar(iter_index, jdata, base_dir, nbands_esti=nbe)
     # 3, create kpoints
-    make_fp_vasp_kp(iter_index, jdata)
+    make_fp_vasp_kp(iter_index, jdata, base_dir)
     # 4, copy cvasp
-    make_fp_vasp_cp_cvasp(iter_index, jdata)
+    make_fp_vasp_cp_cvasp(iter_index, jdata, base_dir)
 
 
 def post_fp_vasp(iter_index, jdata, base_dir, rfailed=None):

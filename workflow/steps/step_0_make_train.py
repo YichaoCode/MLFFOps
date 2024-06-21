@@ -45,7 +45,7 @@ def make_train_example(iter_index, jdata, mdata):
     work_path, task_paths = prepare_paths_and_check(iter_index, jdata)
     if not (work_path and task_paths):
         return
-    # link data and get init data & batch size
+    # link data and get init data & batch sizesetup_work_path
     init_data_sys, init_batch_size = link_data_and_init(iter_index, jdata)
     # make input for these tasks
     jinput = setup_jinput(iter_index, jdata, mdata, init_data_sys, init_batch_size)
@@ -157,22 +157,43 @@ def setup_work_path_old(iter_index, train_name):
     logging.debug(f"Work path created: {abs_work_path}")
     return abs_work_path
 
-def setup_work_path(iter_index, train_name):
+def setup_work_path_legacy(iter_index, train_name):
     current_time = time.strftime("%Y%m%d-%H%M%S")
     work_dir = os.path.join("output", "tasks", current_time)
-    logging.debug(f"Base directory for current run created: {work_dir}")
+    logging.debug(f"Base directory(work_dir) for current run created: {work_dir}")
     os.makedirs(work_dir, exist_ok=True)
 
     iter_name = make_iter_name(iter_index)
     work_path = os.path.join(work_dir, iter_name, train_name)
 
     abs_work_path = os.path.abspath(work_path)
-    logging.debug(f"Creating work path: {abs_work_path}")
     create_path(work_path)
     logging.debug(f"Work path created: {abs_work_path}")
     return abs_work_path, work_dir
 
-def link_init_data(iter_index, work_path, init_data_prefix):
+
+def setup_work_path(iter_index, train_name, base_dir):
+    # The format of base_dir will be abosolute path like:
+    # /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/tasks/20240621-100145
+
+    # current_time = time.strftime("%Y%m%d-%H%M%S")
+    # work_dir = os.path.join("output", "tasks", current_time)
+
+    work_dir = base_dir
+
+
+    logging.debug(f"Base directory(work_dir) for current run created: {work_dir}")
+    os.makedirs(work_dir, exist_ok=True)
+
+    iter_name = make_iter_name(iter_index)
+    work_path = os.path.join(work_dir, iter_name, train_name)
+
+    abs_work_path = os.path.abspath(work_path)
+    create_path(work_path)
+    logging.debug(f"Work path created: {abs_work_path}")
+    return abs_work_path, work_dir
+
+def link_init_data(iter_index, work_path, work_dir, init_data_prefix):
     cwd = os.getcwd()
     logging.debug(f"Current working directory: {cwd}")
     os.chdir(work_path)
@@ -182,6 +203,11 @@ def link_init_data(iter_index, work_path, init_data_prefix):
     logging.debug(f"Creating symlink 'data.init' pointing to {init_data_absolute_path}")
     os.symlink(init_data_absolute_path, "data.init")
     logging.debug(f"Symlink 'data.init' created")
+
+
+    # logging.debug(f"Creating symlink 'data.init' pointing to {work_dir}")
+    # os.symlink(work_dir, "data.init")
+    # logging.debug(f"Symlink 'data.init' created")
 
     os.mkdir("data.iters")
     logging.debug(f"Directory 'data.iters' created")
@@ -231,9 +257,13 @@ def get_sys_batch_size(jdata):
 #     return jinput
 
 
-def make_train(iter_index, jdata, mdata):
+def make_train(iter_index, jdata, mdata, base_dir):
+
+    logger = logging.getLogger(__name__)
+    logger.debug(f"Starting make_train for iteration {iter_index}")
     # 打印 iter_index
     logging.debug(f"iter_index: {iter_index}")
+    logger.debug(f"base_dir: {base_dir}")
 
     # 打印 jdata
     # logging.debug(f"jdata: {json.dumps(jdata, indent=4)}")
@@ -243,15 +273,31 @@ def make_train(iter_index, jdata, mdata):
 
     # Load JSON parameters
     params = load_json_params(jdata)
+    logger.debug(f"Loaded params: {json.dumps(params, indent=4)}")
+
 
     # Check conditions and copy model if necessary
     if not check_and_copy_model(iter_index, params):
-        return
+        logger.critical("check_and_copy_model returned False, exiting function")
+        # 如果模型没有复制过来强制退出
+        sys.exit(1)
+
+        # return
+
+
 
     # Set up paths and link data
-    work_path, work_dir = setup_work_path(iter_index, train_name)
-    cwd = link_init_data(iter_index, work_path, params['init_data_prefix'])
+    work_path, work_dir = setup_work_path(iter_index, train_name, base_dir)
+    logger.debug(f"work_path: {work_path}, work_dir: {work_dir}")
+
+
+
+    # work_path, work_dir = setup_work_path(iter_index, train_name)
+    cwd = link_init_data(iter_index, work_path, work_dir, params['init_data_prefix'])
+    logger.debug(f"Current working directory after link_init_data: {cwd}")
     base_dir = work_dir
+    logger.debug(f"Updated base_dir: {base_dir}")
+
 
     init_data_sys = []
     init_batch_size = []
@@ -259,6 +305,14 @@ def make_train(iter_index, jdata, mdata):
     # Get batch sizes
     init_batch_size_ = get_init_batch_size(jdata, params['init_data_sys_'])
     sys_batch_size = get_sys_batch_size(jdata)
+    logger.debug(f"init_batch_size_: {init_batch_size_}")
+    logger.debug(f"sys_batch_size: {sys_batch_size}")
+
+
+
+
+
+
 
     # 建立训练任务
     # jinput = setup_jinput(iter_index, jdata, mdata, init_batch_size, sys_batch_size)
@@ -515,7 +569,7 @@ def make_train(iter_index, jdata, mdata):
     if jdata.get("one_h5", False):
         convert_training_data_to_hdf5(input_files, os.path.join(work_path, "data.hdf5"))
 
-    return base_dir
+    # return base_dir
 
 
 # region

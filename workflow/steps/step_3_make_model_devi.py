@@ -39,6 +39,14 @@ from utils.utils import (
 def make_model_devi(iter_index, jdata, mdata, base_dir):
     # The MD engine to perform model deviation
     # Default is lammps
+
+    logging.debug(f"base_dir is: {base_dir}")
+
+    # 获取 base_dir 的绝对路径
+    base_dir_abs = os.path.abspath(base_dir)
+
+    # 记录 base_dir 的绝对路径
+    logging.debug(f"base_dir_abs is: {base_dir_abs}")
     model_devi_engine = jdata.get("model_devi_engine", "lammps")
 
     model_devi_jobs = jdata["model_devi_jobs"]
@@ -118,7 +126,8 @@ def make_model_devi(iter_index, jdata, mdata, base_dir):
     iter_name = make_iter_name(iter_index)
     logging.debug("Generated iteration name: %s", iter_name)
 
-    train_path = os.path.join(iter_name, TRAIN_NAME)
+    # train_path = os.path.join(iter_name, TRAIN_NAME)
+    train_path = os.path.join(base_dir, iter_name, TRAIN_NAME)
     logging.debug("Train path before abspath: %s", train_path)
 
     train_path = os.path.abspath(train_path)
@@ -224,83 +233,162 @@ def make_model_devi(iter_index, jdata, mdata, base_dir):
                 if not os.path.exists(models_path):
                     os.symlink(mm, models_path)
 
+
+
+
+
+
+
+
+
+    logging.info(f"Writing current job information to cur_job.json")
     with open(os.path.join(work_path, "cur_job.json"), "w") as outfile:
         json.dump(cur_job, outfile, indent=4)
+    logging.debug(f"cur_job.json written to {work_path}")
 
     conf_path = os.path.join(work_path, "confs")
+    logging.info(f"Creating configuration path: {conf_path}")
     create_path(conf_path)
+    logging.debug(f"Configuration path created: {conf_path}")
+
     sys_counter = 0
     for ss in conf_systems:
+        logging.debug(f"Processing system {sys_counter}")
         conf_counter = 0
         for cc in ss:
+            logging.debug(f"Processing configuration {conf_counter} in system {sys_counter}")
             if (model_devi_engine == "lammps") or (model_devi_engine == "dimer"):
-                conf_name = make_model_devi_conf_name(
-                    sys_idx[sys_counter], conf_counter
-                )
+                logging.info(f"Preparing LAMMPS/DIMER configuration for system {sys_counter}, conf {conf_counter}")
+                conf_name = make_model_devi_conf_name(sys_idx[sys_counter], conf_counter)
+                logging.debug(f"Generated configuration name: {conf_name}")
+
                 orig_poscar_name = conf_name + ".orig.poscar"
                 poscar_name = conf_name + ".poscar"
                 lmp_name = conf_name + ".lmp"
+                logging.debug(f"File names: orig_poscar={orig_poscar_name}, poscar={poscar_name}, lmp={lmp_name}")
+
                 if shuffle_poscar:
+                    logging.info("Shuffling POSCAR")
                     os.symlink(cc, os.path.join(conf_path, orig_poscar_name))
+                    logging.debug(f"Created symlink for original POSCAR: {os.path.join(conf_path, orig_poscar_name)}")
                     poscar_shuffle(
                         os.path.join(conf_path, orig_poscar_name),
                         os.path.join(conf_path, poscar_name),
                     )
+                    logging.debug(f"Shuffled POSCAR created: {os.path.join(conf_path, poscar_name)}")
                 else:
+                    logging.info("Using original POSCAR without shuffling")
                     os.symlink(cc, os.path.join(conf_path, poscar_name))
+                    logging.debug(f"Created symlink for POSCAR: {os.path.join(conf_path, poscar_name)}")
+
                 if "sys_format" in jdata:
                     fmt = jdata["sys_format"]
+                    logging.debug(f"Using custom system format: {fmt}")
                 else:
                     fmt = "vasp/poscar"
+                    logging.debug("Using default system format: vasp/poscar")
+
+                logging.info(f"Creating dpdata System object from {poscar_name}")
                 system = dpdata.System(
                     os.path.join(conf_path, poscar_name),
                     fmt=fmt,
                     type_map=jdata["type_map"],
                 )
-                if jdata.get("model_devi_nopbc", False):
-                    system.remove_pbc()
-                system.to_lammps_lmp(os.path.join(conf_path, lmp_name))
-            elif model_devi_engine == "gromacs":
-                pass
-            elif model_devi_engine == "amber":
-                # Jinzhe's specific Amber version
-                conf_name = make_model_devi_conf_name(
-                    sys_idx[sys_counter], conf_counter
-                )
-                rst7_name = conf_name + ".rst7"
-                # link restart file
-                os.symlink(cc, os.path.join(conf_path, rst7_name))
-            conf_counter += 1
-        sys_counter += 1
+                logging.debug(f"dpdata System object created with {len(system)} atoms")
 
+                if jdata.get("model_devi_nopbc", False):
+                    logging.info("Removing periodic boundary conditions")
+                    system.remove_pbc()
+                    logging.debug("PBC removed from the system")
+
+                logging.info(f"Converting system to LAMMPS format: {lmp_name}")
+                system.to_lammps_lmp(os.path.join(conf_path, lmp_name))
+                logging.debug(f"LAMMPS file created: {os.path.join(conf_path, lmp_name)}")
+
+            elif model_devi_engine == "gromacs":
+                logging.info("GROMACS engine selected, no action taken")
+                pass
+
+            elif model_devi_engine == "amber":
+                logging.info(f"Preparing AMBER configuration for system {sys_counter}, conf {conf_counter}")
+                conf_name = make_model_devi_conf_name(sys_idx[sys_counter], conf_counter)
+                logging.debug(f"Generated configuration name: {conf_name}")
+
+                rst7_name = conf_name + ".rst7"
+                logging.debug(f"RST7 file name: {rst7_name}")
+
+                logging.info(f"Creating symlink for AMBER restart file: {rst7_name}")
+                os.symlink(cc, os.path.join(conf_path, rst7_name))
+                logging.debug(f"Created symlink for AMBER restart file: {os.path.join(conf_path, rst7_name)}")
+
+            conf_counter += 1
+            logging.debug(f"Processed configuration {conf_counter} in system {sys_counter}")
+        sys_counter += 1
+        logging.debug(f"Processed system {sys_counter}")
+
+    logging.info("Completed processing all systems and configurations")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    logging.info("Determining input mode for model deviation calculation")
     input_mode = "native"
     if "calypso_input_path" in jdata:
         input_mode = "buffet"
+        logging.info("Input mode set to 'buffet' due to presence of calypso_input_path")
     if "template" in cur_job:
         input_mode = "revise_template"
+        logging.info("Input mode set to 'revise_template' due to presence of template in cur_job")
+    logging.debug(f"Final input mode: {input_mode}")
+
     use_plm = jdata.get("model_devi_plumed", False)
     use_plm_path = jdata.get("model_devi_plumed_path", False)
+    logging.debug(f"PLUMED settings: use_plm={use_plm}, use_plm_path={use_plm_path}")
+
     if input_mode == "native":
+        logging.info("Processing native input mode")
         if (model_devi_engine == "lammps") or (model_devi_engine == "dimer"):
+            logging.info(f"Using LAMMPS/DIMER engine for model deviation")
             _make_model_devi_native(iter_index, jdata, mdata, conf_systems)
         elif model_devi_engine == "gromacs":
+            logging.info("Using GROMACS engine for model deviation")
             _make_model_devi_native_gromacs(iter_index, jdata, mdata, conf_systems)
         elif model_devi_engine == "amber":
+            logging.info("Using AMBER engine for model deviation")
             _make_model_devi_amber(iter_index, jdata, mdata, conf_systems)
         elif model_devi_engine == "calypso":
+            logging.info("Using CALYPSO engine for model deviation")
             _make_model_devi_native_calypso(
                 iter_index, model_devi_jobs, calypso_run_opt_path
-            )  # generate input.dat automatic in each iter
+            )
+            logging.debug("Generated input.dat automatically for each iteration")
         else:
+            logging.error(f"Unknown model_devi engine: {model_devi_engine}")
             raise RuntimeError("unknown model_devi engine", model_devi_engine)
     elif input_mode == "revise_template":
-        _make_model_devi_revmat(iter_index, jdata, mdata, conf_systems)
+        logging.info("Processing revise_template input mode")
+        _make_model_devi_revmat(iter_index, jdata, mdata, conf_systems, base_dir)
     elif input_mode == "buffet":
-        _make_model_devi_buffet(
-            jdata, calypso_run_opt_path
-        )  # generate confs according to the input.dat provided
+        logging.info("Processing buffet input mode")
+        _make_model_devi_buffet(jdata, calypso_run_opt_path)
+        logging.debug("Generated configurations according to the provided input.dat")
     else:
+        logging.error(f"Unknown model_devi input mode: {input_mode}")
         raise RuntimeError("unknown model_devi input mode", input_mode)
-    # Copy user defined forward_files
+
+    logging.info("Copying user-defined forward files")
     symlink_user_forward_files(mdata=mdata, task_type="model_devi", work_path=work_path)
+    logging.debug("User-defined forward files symlinked")
+
+    logging.info("Model deviation preparation completed successfully")
     return True

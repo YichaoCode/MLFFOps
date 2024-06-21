@@ -4,6 +4,7 @@
 import os
 import json
 import logging
+import time
 import warnings
 
 from workflow.steps.step_0_make_train import make_train
@@ -149,10 +150,21 @@ def run_iter(param_file, machine_file, restart_task=None):
 
     cont = True
     ii = iter_rec[0]
+    logger.debug(f"Starting iterations from index {ii}")
 
+    base_dir = None
     while cont:
         iter_name = make_iter_name(ii)
+        logger.info(f"Processing iteration {iter_name}")
         sepline(iter_name, "=")
+
+        # base_dir will like /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/tasks/20240621-100145
+        if base_dir is None:
+            base_dir = os.path.join(os.getcwd(), "output", "tasks", time.strftime("%Y%m%d-%H%M%S"))
+            logger.debug(f"Creating base directory: {base_dir}")
+            create_path(base_dir)
+            logger.debug(f"Base directory created: {base_dir}")
+
 
         for jj in range(numb_task):
             if ii * max_tasks + jj <= iter_rec[0] * max_tasks + iter_rec[1]:
@@ -166,7 +178,8 @@ def run_iter(param_file, machine_file, restart_task=None):
                 if jj == 0:
                     log_iter("make_train", ii, jj)
                     logger.info(f"Running task {jj:02d} (make_train) for iteration {ii:03d}")
-                    base_dir = make_train(ii, jdata, mdata)
+                    # base_dir = make_train(ii, jdata, mdata)
+                    make_train(ii, jdata, mdata, base_dir)
                     logger.info(f"Task {jj:02d} (make_train) for iteration {ii:03d} completed")
 
                 elif jj == 1:
@@ -206,7 +219,7 @@ def run_iter(param_file, machine_file, restart_task=None):
                 elif jj == 6:
                     log_iter("make_fp", ii, jj)
                     logger.info(f"Running task {jj:02d} (make_fp) for iteration {ii:03d}")
-                    make_fp(ii, jdata, mdata)
+                    make_fp(ii, jdata, mdata, base_dir)
                     logger.info(f"Task {jj:02d} (make_fp) for iteration {ii:03d} completed")
 
                 elif jj == 7:

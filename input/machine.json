@@ -58,7 +58,7 @@
 	],
 	"fp": [
 	  {
-		"command": "(' srun ~x-graeme/bin/vasp_std') || true",
+		"command": " srun ~x-graeme/bin/vasp_std",
 		"machine": {
 		  "batch_type": "Slurm",
 		  "context_type": "SSHContext",
@@ -77,7 +77,7 @@
 			"#!/bin/bash",
 			"#SBATCH --nodes=1",
 			"#SBATCH -n 128",
-			"#SBATCH -p wholenode",
+			"#SBATCH -p shared",
 			"#SBATCH -t 01:00:00",
 			"#SBATCH -A che190010",
 			"module load intel"

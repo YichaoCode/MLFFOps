@@ -34,7 +34,7 @@ def run_train(iter_index, jdata, mdata, base_dir):
             zbl_file = os.path.basename(jdata.get("srtab_file_path", None))
             logging.debug("ZBL file path found: %s", zbl_file)
 
-        if training_reuse_iter is not None and iter_index >= training_re.use_iter:
+        if training_reuse_iter is not None and iter_index >= training_reuse_iter:
             training_init_model = True
         
         mdata = set_version(mdata) if "deepmd_version" not in mdata.keys() else mdata

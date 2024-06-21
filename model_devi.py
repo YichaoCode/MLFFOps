@@ -1,6 +1,6 @@
 # model_devi.py
 # created by Yichao
-
+import logging
 import os
 import glob
 import json
@@ -444,7 +444,7 @@ def _make_model_devi_amber(
             os.chdir(cwd_)
 
 
-def _make_model_devi_revmat(iter_index, jdata, mdata, conf_systems):
+def _make_model_devi_revmat(iter_index, jdata, mdata, conf_systems, base_dir):
     model_devi_jobs = jdata["model_devi_jobs"]
     if iter_index >= len(model_devi_jobs):
         return False
@@ -481,6 +481,9 @@ def _make_model_devi_revmat(iter_index, jdata, mdata, conf_systems):
         mdata = set_version(mdata)
     deepmd_version = mdata["deepmd_version"]
 
+    logging.debug(f"Starting model deviation task creation for iteration {iter_index}")
+    logging.debug(f"开始为第{iter_index}次迭代创建模型偏差任务")
+
     sys_counter = 0
     for ss in conf_systems:
         conf_counter = 0
@@ -509,30 +512,80 @@ def _make_model_devi_revmat(iter_index, jdata, mdata, conf_systems):
                             _lmp_mat += _plm_mat
                         total_rev_mat.append(_lmp_mat)
             print(len(total_rev_mat))
+
+            logging.debug(f"Processing system {sys_counter}, configuration {conf_counter}")
+            logging.debug(f"处理系统 {sys_counter}, 构型 {conf_counter}")
+
+            # 遍历每个修订矩阵项
+            # Iterate through each revision matrix item
             for ii in range(len(total_rev_mat)):
                 total_rev_item = total_rev_mat[ii]
+
+                # 生成任务名,如 "task.000.000000"
+                # Generate task name, e.g., "task.000.000000"
                 task_name = make_model_devi_task_name(
                     sys_idx[sys_counter], task_counter
                 )
+                # 生成构型文件名,如 "000.0000.lmp"
+                # Generate configuration file name, e.g., "000.0000.lmp"
                 conf_name = (
                     make_model_devi_conf_name(sys_idx[sys_counter], conf_counter)
                     + ".lmp"
                 )
-                task_path = os.path.join(work_path, task_name)
+
+                # 创建任务路径,如 "iter.000000/01.model_devi/task.000.000000"
+                # Create task path, e.g., "iter.000000/01.model_devi/task.000.000000"
+                task_path = os.path.join(base_dir, work_path, task_name)
                 # create task path
                 create_path(task_path)
+                logging.debug(f"Created task directory: {task_path}")
+                logging.debug(f"创建任务目录: {task_path}")
+
+                absolute_task_path = os.path.abspath(task_path)
+                logging.debug(f"Absolute path of task directory: {absolute_task_path}")
+                logging.debug(f"任务目录的绝对路径: {absolute_task_path}")
+
                 model_devi_merge_traj = jdata.get("model_devi_merge_traj", False)
+
+
+                # 如果不合并轨迹,则创建traj子目录
+                # Create traj subdirectory if trajectories are not merged
                 if not model_devi_merge_traj:
-                    create_path(os.path.join(task_path, "traj"))
-                # link conf
+                    traj_path = os.path.join(task_path, "traj")
+                    create_path(traj_path)
+                    logging.debug(f"Created traj subdirectory: {traj_path}")
+                    logging.debug(f"创建traj子目录: {traj_path}")
+
+
+                # 链接构型文件
+                # Link configuration file
                 loc_conf_name = "conf.lmp"
                 os.symlink(
                     os.path.join(os.path.join("..", "confs"), conf_name),
                     os.path.join(task_path, loc_conf_name),
                 )
-                cwd_ = os.getcwd()
+                logging.debug(f"Linked configuration file: {conf_name} -> {loc_conf_name}")
+                logging.debug(f"链接构型文件: {conf_name} -> {loc_conf_name}")
+
+
+
+
+
+
+
+                # 切换到任务目录
+                # Change to task directory
                 # chdir to task path
+                cwd_ = os.getcwd()
                 os.chdir(task_path)
+
+
+
+
+
+
+                # 复制LAMMPS模板并修改
+                # Copy and modify LAMMPS template
                 shutil.copyfile(lmp_templ, "input.lammps")
                 # revise input of lammps
                 with open("input.lammps") as fp:

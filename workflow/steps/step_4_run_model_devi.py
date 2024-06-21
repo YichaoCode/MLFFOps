@@ -62,7 +62,10 @@ def run_md_model_devi(iter_index, jdata, mdata, base_dir):
 
 
 
-    work_path = os.path.join(base_dir, iter_name, model_devi_name,'confs')
+    # work_path = os.path.join(base_dir, iter_name, model_devi_name,'confs')
+    work_path = os.path.join(base_dir, iter_name, model_devi_name)
+
+
     logging.debug("Joining paths to create work_path...")
     logging.debug("  base_dir:        %s", base_dir)
     logging.debug("  iter_name:       %s", iter_name)
@@ -297,7 +300,7 @@ def run_md_model_devi(iter_index, jdata, mdata, base_dir):
         )
 
     elif Version(api_version) >= Version("1.0"):
-        work_path = os.path.join(work_path, 'confs')
+        # work_path = os.path.join(work_path, 'confs')
 
         logging.debug("Creating submission with the following parameters:")
         logging.debug("  model_devi_machine: %s", mdata["model_devi_machine"])
