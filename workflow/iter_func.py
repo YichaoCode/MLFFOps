@@ -140,17 +140,17 @@ def make_train(iter_index, jdata, mdata):
         init_batch_size_ = list(jdata["init_batch_size"])
         if len(init_data_sys_) > len(init_batch_size_):
             warnings.warn(
-                "The batch sizes are not enough. Assume auto for those not spefified."
+                "The batch sizes are not enough. Assume MLFFOps for those not spefified."
             )
             init_batch_size.extend(
-                ["auto" for aa in range(len(init_data_sys_) - len(init_batch_size))]
+                ["MLFFOps" for aa in range(len(init_data_sys_) - len(init_batch_size))]
             )
     else:
-        init_batch_size_ = ["auto" for aa in range(len(jdata["init_data_sys"]))]
+        init_batch_size_ = ["MLFFOps" for aa in range(len(jdata["init_data_sys"]))]
     if "sys_batch_size" in jdata:
         sys_batch_size = jdata["sys_batch_size"]
     else:
-        sys_batch_size = ["auto" for aa in range(len(jdata["sys_configs"]))]
+        sys_batch_size = ["MLFFOps" for aa in range(len(jdata["sys_configs"]))]
 
     # make sure all init_data_sys has the batch size -- for the following `zip`
     assert len(init_data_sys_) <= len(init_batch_size_)
@@ -180,7 +180,7 @@ def make_train(iter_index, jdata, mdata):
                     make_iter_name(ii), model_devi_name, calypso_model_devi_name
                 )
                 sys_list = glob.glob(os.path.join(_modd_path, "*.structures"))
-                sys_batch_size = ["auto" for aa in range(len(sys_list))]
+                sys_batch_size = ["MLFFOps" for aa in range(len(sys_list))]
             for jj in fp_data_sys:
                 sys_idx = int(jj.split(".")[-1])
                 sys_paths = expand_sys_str(jj)
@@ -1521,7 +1521,7 @@ def run_fp_inner(
 def detect_batch_size(batch_size, system=None):
     if type(batch_size) == int:
         return batch_size
-    elif batch_size == "auto":
+    elif batch_size == "MLFFOps":
         # automaticcaly set batch size, batch_size = 32 // atom_numb (>=1, <=fram_numb)
         # check if h5 file
         format = "deepmd/npy" if "#" not in system else "deepmd/hdf5"

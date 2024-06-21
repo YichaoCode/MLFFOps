@@ -253,7 +253,7 @@ def _get_param_alias(jdata, names):
 
 
 def update_mass_map(jdata):
-    if jdata["mass_map"] == "auto":
+    if jdata["mass_map"] == "MLFFOps":
         jdata["mass_map"] = [get_atomic_masses(i) for i in jdata["type_map"]]
 
 
@@ -882,5 +882,5 @@ def get_atomic_masses(atom):
         raise RuntimeError(
             "unknown atomic identifier",
             atom,
-            'if one want to use isotopes, or non-standard element names, chemical symbols, or atomic number in the type_map list, please customize the mass_map list instead of using "auto".',
+            'if one want to use isotopes, or non-standard element names, chemical symbols, or atomic number in the type_map list, please customize the mass_map list instead of using "MLFFOps".',
         )

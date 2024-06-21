@@ -174,7 +174,7 @@ def setup_work_path_legacy(iter_index, train_name):
 
 def setup_work_path(iter_index, train_name, base_dir):
     # The format of base_dir will be abosolute path like:
-    # /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/tasks/20240621-100145
+    # /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/MLFFOps/output/tasks/20240621-100145
 
     # current_time = time.strftime("%Y%m%d-%H%M%S")
     # work_dir = os.path.join("output", "tasks", current_time)
@@ -234,17 +234,17 @@ def get_init_batch_size(jdata, init_data_sys_):
     if "init_batch_size" in jdata:
         init_batch_size_ = list(jdata["init_batch_size"])
         if len(init_data_sys_) > len(init_batch_size_):
-            warnings.warn("The batch sizes are not enough. Assume auto for those not specified.")
-            init_batch_size_.extend(["auto" for _ in range(len(init_data_sys_) - len(init_batch_size_))])
+            warnings.warn("The batch sizes are not enough. Assume MLFFOps for those not specified.")
+            init_batch_size_.extend(["MLFFOps" for _ in range(len(init_data_sys_) - len(init_batch_size_))])
     else:
-        init_batch_size_ = ["auto" for _ in range(len(jdata["init_data_sys"]))]
+        init_batch_size_ = ["MLFFOps" for _ in range(len(jdata["init_data_sys"]))]
     return init_batch_size_
 
 
 def get_sys_batch_size(jdata):
     if "sys_batch_size" in jdata:
         return jdata["sys_batch_size"]
-    return ["auto" for _ in range(len(jdata["sys_configs"]))]
+    return ["MLFFOps" for _ in range(len(jdata["sys_configs"]))]
 
 
 # def setup_jinput(iter_index, jdata, mdata, init_batch_size, sys_batch_size):
@@ -345,7 +345,7 @@ def make_train(iter_index, jdata, mdata, base_dir):
                     make_iter_name(ii), model_devi_name, calypso_model_devi_name
                 )
                 sys_list = glob.glob(os.path.join(_modd_path, "*.structures"))
-                sys_batch_size = ["auto" for aa in range(len(sys_list))]
+                sys_batch_size = ["MLFFOps" for aa in range(len(sys_list))]
             for jj in fp_data_sys:
                 sys_idx = int(jj.split(".")[-1])
                 sys_paths = expand_sys_str(jj)
@@ -659,17 +659,17 @@ def make_train_old_but_work(iter_index, jdata, mdata):
         init_batch_size_ = list(jdata["init_batch_size"])
         if len(init_data_sys_) > len(init_batch_size_):
             warnings.warn(
-                "The batch sizes are not enough. Assume auto for those not spefified."
+                "The batch sizes are not enough. Assume MLFFOps for those not spefified."
             )
             init_batch_size.extend(
-                ["auto" for aa in range(len(init_data_sys_) - len(init_batch_size))]
+                ["MLFFOps" for aa in range(len(init_data_sys_) - len(init_batch_size))]
             )
     else:
-        init_batch_size_ = ["auto" for aa in range(len(jdata["init_data_sys"]))]
+        init_batch_size_ = ["MLFFOps" for aa in range(len(jdata["init_data_sys"]))]
     if "sys_batch_size" in jdata:
         sys_batch_size = jdata["sys_batch_size"]
     else:
-        sys_batch_size = ["auto" for aa in range(len(jdata["sys_configs"]))]
+        sys_batch_size = ["MLFFOps" for aa in range(len(jdata["sys_configs"]))]
 
     # make sure all init_data_sys has the batch size -- for the following `zip`
     assert len(init_data_sys_) <= len(init_batch_size_)
@@ -699,7 +699,7 @@ def make_train_old_but_work(iter_index, jdata, mdata):
                     make_iter_name(ii), model_devi_name, calypso_model_devi_name
                 )
                 sys_list = glob.glob(os.path.join(_modd_path, "*.structures"))
-                sys_batch_size = ["auto" for aa in range(len(sys_list))]
+                sys_batch_size = ["MLFFOps" for aa in range(len(sys_list))]
             for jj in fp_data_sys:
                 sys_idx = int(jj.split(".")[-1])
                 sys_paths = expand_sys_str(jj)
@@ -918,7 +918,7 @@ def make_train_old_but_work(iter_index, jdata, mdata):
 def detect_batch_size(batch_size, system=None):
     if type(batch_size) == int:
         return batch_size
-    elif batch_size == "auto":
+    elif batch_size == "MLFFOps":
         # automaticcaly set batch size, batch_size = 32 // atom_numb (>=1, <=fram_numb)
         # check if h5 file
         format = "deepmd/npy" if "#" not in system else "deepmd/hdf5"
@@ -933,7 +933,7 @@ def detect_batch_size(batch_size, system=None):
 def detect_batch_size_old(batch_size, system=None):
     if type(batch_size) == int:
         return batch_size
-    elif batch_size == "auto":
+    elif batch_size == "MLFFOps":
         # automaticcaly set batch size, batch_size = 32 // atom_numb (>=1, <=fram_numb)
         # check if h5 file
         format = "deepmd/npy" if "#" not in system else "deepmd/hdf5"
@@ -1160,17 +1160,17 @@ def make_train_legacy(iter_index, jdata, mdata):
         init_batch_size_ = list(jdata["init_batch_size"])
         if len(init_data_sys_) > len(init_batch_size_):
             warnings.warn(
-                "The batch sizes are not enough. Assume auto for those not spefified."
+                "The batch sizes are not enough. Assume MLFFOps for those not spefified."
             )
             init_batch_size.extend(
-                ["auto" for aa in range(len(init_data_sys_) - len(init_batch_size))]
+                ["MLFFOps" for aa in range(len(init_data_sys_) - len(init_batch_size))]
             )
     else:
-        init_batch_size_ = ["auto" for aa in range(len(jdata["init_data_sys"]))]
+        init_batch_size_ = ["MLFFOps" for aa in range(len(jdata["init_data_sys"]))]
     if "sys_batch_size" in jdata:
         sys_batch_size = jdata["sys_batch_size"]
     else:
-        sys_batch_size = ["auto" for aa in range(len(jdata["sys_configs"]))]
+        sys_batch_size = ["MLFFOps" for aa in range(len(jdata["sys_configs"]))]
 
     # make sure all init_data_sys has the batch size -- for the following `zip`
     assert len(init_data_sys_) <= len(init_batch_size_)
@@ -1200,7 +1200,7 @@ def make_train_legacy(iter_index, jdata, mdata):
                     make_iter_name(ii), model_devi_name, calypso_model_devi_name
                 )
                 sys_list = glob.glob(os.path.join(_modd_path, "*.structures"))
-                sys_batch_size = ["auto" for aa in range(len(sys_list))]
+                sys_batch_size = ["MLFFOps" for aa in range(len(sys_list))]
             for jj in fp_data_sys:
                 sys_idx = int(jj.split(".")[-1])
                 sys_paths = expand_sys_str(jj)

@@ -72,7 +72,7 @@ def main():
     args = parse_args()
 
     # 先配置日志
-    custom_log_path = '/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/dpgen.log'
+    custom_log_path = '//output/dpgen.log'
     logger = logging.getLogger('dpgen')
     logger.setLevel(logging.INFO)
     # logger.setLevel(logging.DEBUG)
@@ -90,7 +90,7 @@ def main():
 
 
     # 先配置日志
-    custom_log_path = '/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/'
+    custom_log_path = '//output/'
     dpgen_log_path = os.path.join(custom_log_path, 'dpgen.log')
     dpdispatcher_log_path = os.path.join(custom_log_path, 'dpdispatcher.log')
 

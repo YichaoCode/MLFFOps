@@ -19,7 +19,7 @@ def run_mdata_arginfo() -> Argument:
 # basics
 def basic_args() -> List[Argument]:
     doc_type_map = "Atom types. Reminder: The elements in param.json, type.raw and data.lmp(when using lammps) should be in the same order."
-    doc_mass_map = 'Standard atomic weights (default: "auto"). if one want to use isotopes, or non-standard element names, chemical symbols, or atomic number in the type_map list, please customize the mass_map list instead of using "auto".'
+    doc_mass_map = 'Standard atomic weights (default: "MLFFOps"). if one want to use isotopes, or non-standard element names, chemical symbols, or atomic number in the type_map list, please customize the mass_map list instead of using "MLFFOps".'
     doc_use_ele_temp = "Currently only support fp_style vasp. \n\n\
 - 0: no electron temperature. \n\n\
 - 1: eletron temperature as frame parameter. \n\n\
@@ -28,7 +28,7 @@ def basic_args() -> List[Argument]:
     return [
         Argument("type_map", list, optional=False, doc=doc_type_map),
         Argument(
-            "mass_map", [list, str], optional=True, default="auto", doc=doc_mass_map
+            "mass_map", [list, str], optional=True, default="MLFFOps", doc=doc_mass_map
         ),
         Argument("use_ele_temp", int, optional=True, default=0, doc=doc_use_ele_temp),
     ]
@@ -38,10 +38,10 @@ def data_args() -> List[Argument]:
     doc_init_data_prefix = "Prefix of initial data directories."
     doc_init_data_sys = "Paths of initial data. The path can be either a system diretory containing NumPy files or an HDF5 file. You may use either absolute or relative path here. Systems will be detected recursively in the directories or the HDF5 file."
     doc_sys_format = "Format of sys_configs."
-    doc_init_batch_size = "Each number is the batch_size of corresponding system for training in init_data_sys. One recommended rule for setting the sys_batch_size and init_batch_size is that batch_size mutiply number of atoms ot the stucture should be larger than 32. If set to auto, batch size will be 32 divided by number of atoms."
+    doc_init_batch_size = "Each number is the batch_size of corresponding system for training in init_data_sys. One recommended rule for setting the sys_batch_size and init_batch_size is that batch_size mutiply number of atoms ot the stucture should be larger than 32. If set to MLFFOps, batch size will be 32 divided by number of atoms."
     doc_sys_configs_prefix = "Prefix of sys_configs."
     doc_sys_configs = "Containing directories of structures to be explored in iterations.Wildcard characters are supported here."
-    doc_sys_batch_size = "Each number is the batch_size for training of corresponding system in sys_configs. If set to auto, batch size will be 32 divided by number of atoms."
+    doc_sys_batch_size = "Each number is the batch_size for training of corresponding system in sys_configs. If set to MLFFOps, batch size will be 32 divided by number of atoms."
 
     return [
         Argument("init_data_prefix", str, optional=True, doc=doc_init_data_prefix),
@@ -587,17 +587,17 @@ def fp_style_gaussian_args() -> List[Argument]:
     """
     doc_keywords = "Keywords for Gaussian input, e.g. force b3lyp/6-31g**. If a list, run multiple steps."
     doc_multiplicity = (
-        "Spin multiplicity for Gaussian input. If `auto`, multiplicity will be detected automatically, "
+        "Spin multiplicity for Gaussian input. If `MLFFOps`, multiplicity will be detected automatically, "
         "with the following rules: when fragment_guesses=True, multiplicity will +1 for each radical, "
         "and +2 for each oxygen molecule; when fragment_guesses=False, multiplicity will be 1 or 2, "
         "but +2 for each oxygen molecule."
     )
     doc_nproc = "The number of processors for Gaussian input."
     doc_charge = "Molecule charge. Only used when charge is not provided by the system."
-    doc_fragment_guesses = "Initial guess generated from fragment guesses. If True, `multiplicity` should be `auto`."
+    doc_fragment_guesses = "Initial guess generated from fragment guesses. If True, `multiplicity` should be `MLFFOps`."
     doc_basis_set = "Custom basis set."
     doc_keywords_high_multiplicity = (
-        "Keywords for points with multiple raicals. `multiplicity` should be `auto`. "
+        "Keywords for points with multiple raicals. `multiplicity` should be `MLFFOps`. "
         "If not set, fallback to normal keywords."
     )
 
@@ -607,7 +607,7 @@ def fp_style_gaussian_args() -> List[Argument]:
             "multiplicity",
             [int, str],
             optional=True,
-            default="auto",
+            default="MLFFOps",
             doc=doc_multiplicity,
         ),
         Argument("nproc", int, optional=False, doc=doc_nproc),

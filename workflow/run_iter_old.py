@@ -40,7 +40,7 @@ from config import *
 def run_iter(param_file, machine_file, restart_task=None):
     logger = logging.getLogger(__name__)
 
-    # custom_log_path = '/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/dpgen.log'
+    # custom_log_path = '/home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/MLFFOps/output/dpgen.log'
     # logger = logging.getLogger('dpgen')
     # logger.setLevel(logging.INFO)
     # file_handler = logging.FileHandler(custom_log_path)

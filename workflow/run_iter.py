@@ -158,7 +158,7 @@ def run_iter(param_file, machine_file, restart_task=None):
         logger.info(f"Processing iteration {iter_name}")
         sepline(iter_name, "=")
 
-        # base_dir will like /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/auto/output/tasks/20240621-100145
+        # base_dir will like /home/yinbc/yichao/dev-002-dpgen-dimer/Cu_COH_dpa2/MLFFOps/output/tasks/20240621-100145
         if base_dir is None:
             base_dir = os.path.join(os.getcwd(), "output", "tasks", time.strftime("%Y%m%d-%H%M%S"))
             logger.debug(f"Creating base directory: {base_dir}")
